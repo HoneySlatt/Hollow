@@ -1,0 +1,146 @@
+# AGENTS.md
+
+Rules for AI agents working in this repository. Read this file fully at the start of every session.
+
+## Project
+
+Hollow is its owner's desktop shell for Wayland, in Rust: the bar, the launcher, notifications,
+the tray, the control centre and its popups, the on-screen displays, the lock screen, the login
+screen, the polkit agent and the theme of the other applications
+([ADR-0001](docs/adr/0001-what-hollow-is.md)). It runs only on Yuna, the owner's compositor, and
+is optional above it. It draws with uwui, the owner's interface toolkit. It is under
+GPL-3.0-or-later, and public ([ADR-0012](docs/adr/0012-gpl-3-0-or-later.md)).
+
+Today Hollow has its design and no code. Its code starts after uwui's first stage
+([ADR-0002](docs/adr/0002-uwui-and-no-code-before-its-first-stage.md)).
+
+Agents develop it; the owner sets its direction and validates its decisions. Anyone must be able to
+understand it from the repository alone. Documentation is part of every deliverable.
+
+## Read before working
+
+- `docs/PLAN.md`, its *Current* section and the current milestone: what to do now.
+- When planning, or when the task touches a decision: `docs/ROADMAP.md` (direction, stages, the
+  quality bar), `docs/ARCHITECTURE.md`, `docs/adr/`, `docs/needs.md` (what Hollow asks of Yuna
+  and uwui) and `docs/survey.md`, the facts behind the decisions.
+
+You remember nothing from earlier sessions. What is not written in these files is lost.
+
+## Scope
+
+- Work on the current milestone of `docs/PLAN.md`, or on what the owner asks. A request that changes
+  the plan is written into the PLAN.
+- Do not start later stages, nor prepare abstractions for them.
+- When experience contradicts the roadmap, propose a change; once accepted, record it in an ADR.
+- uwui comes first: no session of Hollow's takes the owner's attention, quota or measuring machine
+  from uwui (Yuna's ADR-0003).
+
+## Commands
+
+```sh
+nix develop -c scripts/check.sh    # every check of the definition of done; what CI runs
+```
+
+Hollow never runs on the owner's real session, configuration or data unless the owner asks: tests
+use a private D-Bus bus, a throwaway home and a headless compositor.
+
+## Definition of done
+
+- `scripts/check.sh` passes.
+- The program was run and behaved as expected.
+- New behaviour is tested where a test is practical.
+- The budgets the milestone touches are measured and met; the figures go to
+  `docs/measurements.md`.
+- `docs/PLAN.md` gives the new status.
+- Every document the change affects is updated and reread as a newcomer would.
+- Every decision a newcomer would question is an ADR.
+
+Never report as working what was not verified. Say exactly what was not, and why. Never weaken a
+check to make it pass (a skipped test, a raised budget, a silenced lint) without the owner's go.
+
+## Architecture rules
+
+- One process holds the shell, its lock screen and its polkit agent; the login screen is a
+  program of its own ([ADR-0003](docs/adr/0003-one-process-the-greeter-apart.md)).
+- PAM runs in a helper program started for each attempt, never in the shell's process.
+- Services are Hollow's own clients on zbus, on the host's loop, with no tokio
+  ([ADR-0004](docs/adr/0004-system-services-hollows-own-clients-on-zbus.md)).
+- Nothing runs, polls or draws at rest. A service is subscribed only while something shown needs
+  it.
+- The interface's thread never waits on a disk, the network or D-Bus.
+- What Yuna does (the wallpaper, idle, captures, night light, brightness) is never done again in
+  Hollow. A change to the contract with Yuna is decided with the owner and written in both
+  repositories: here in `docs/needs.md`, in Yuna by Yuna's own session.
+- Code that any host of uwui needs is written in uwui, through its session, not here.
+
+## Rules the code depends on
+
+- Passwords never leave the field and the PAM helper: never logged, never shown to an agent,
+  never kept after the attempt.
+- Signals from logind and other system services are checked against the sender's unique name.
+- Everything other programs send (notification markup and images, tray menus and icons, clipboard
+  data, the greeter's appearance file) is untrusted, bounded and fuzzed.
+- The owner's data is never lost: versioned formats, atomic writes, a backup before a migration.
+
+## Code rules
+
+- No abstraction without a second concrete use.
+- No reimplementation of the standard library without a measurement.
+- A new dependency needs a reason, an alternative weighed and a license checked; ask the owner.
+- Every `unsafe` block has a `// SAFETY:` comment.
+- Code reads plainly to someone who has never seen it: names that say what things are, one job per
+  function, the obvious solution over the clever one.
+- Comments say why, not what. No commented-out code.
+- A bug is fixed at its cause, with the test that failed first; look for the same bug elsewhere.
+- Edge cases are thought through and tested: empty, huge, malformed, concurrent, interrupted.
+- Search for an existing helper before writing one. One way to do a thing.
+- Delete dead code and unused parameters.
+- Report drift from `docs/ARCHITECTURE.md` or an ADR; do not work around it.
+
+## Documentation
+
+- It is written for a newcomer: plain words, short sentences, the essential first, as short as
+  complete.
+- It describes the code as it is now. Wrong documentation is worse than none.
+- No reference to conversations the reader cannot see. Coined terms go in `docs/glossary.md`.
+- Limits and debt are stated plainly.
+- Each fact has one home; other documents link to it:
+  - the code's documentation: contracts, limits, figures;
+  - `docs/ARCHITECTURE.md`: flows across parts;
+  - ADRs: why a decision was taken, what was rejected; only their status changes later;
+  - `docs/PLAN.md`: status and known debt;
+  - `CHANGELOG.md`: what changed for users.
+- A change that leaves a document wrong is not finished.
+
+## Commits
+
+- One logical change per commit, in English, its subject in the imperative.
+- Never commit code that fails the checks. A check that fails on the main branch is fixed before
+  any new work.
+
+## When to stop and ask
+
+Before a decision no ADR covers, a new dependency, a request against the roadmap or an ADR, a plan
+that turns out wrong, or deleting or rewriting a large part of the code. Give the options, their
+trade-offs in plain terms and a recommendation for the long term, one decision at a time.
+
+## Reporting
+
+A stage ends with a stage audit, and a release is preceded by a release audit; their findings go to
+`docs/audits/`. Ideas outside the current work go to the *Ideas* of `docs/PLAN.md`.
+
+At the end of each milestone, after a reviewing agent on the strongest model has checked it against
+this file, the ADRs and the quality bar, report: what was done; the choices, why, and the
+alternatives rejected; what to read first; the figures measured; shortcuts and debt; the next step,
+on the owner's go. The next milestone starts in a new session, unless the owner says to continue.
+
+## Working with several agents
+
+- One milestone per agent, as `docs/PLAN.md` assigns it.
+- Shared files (`docs/PLAN.md`, `docs/ARCHITECTURE.md`, the build manifests): one agent at a time.
+- Commit your files by their paths, never with `git add -A`.
+- Delegate broad searches to subagents; keep their conclusions, not the files they read.
+
+## Language
+
+Everything in the repository is in English.
