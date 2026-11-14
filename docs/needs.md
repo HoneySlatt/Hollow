@@ -3,7 +3,8 @@
 Hollow runs only on Yuna and draws with uwui. This file lists what it needs from each, and where
 each need stands. Each project writes the needs in its own documents, through its own session
 ([ADR-0015](adr/0015-what-hollow-asks-of-yuna-and-uwui.md)). *Asked* means sent to that project's
-session; *planned* means written in its plan; *delivered* means built.
+session; *listed* means written in its own list of needs; *planned* means written in its plan;
+*delivered* means built.
 
 ## Yuna
 
@@ -31,15 +32,16 @@ lock command.
 
 ## uwui
 
-Already listed in SlimeEngine's `uwui-needs.md`: a layer-shell surface as a target, and a
-session-lock surface as a target, one per output.
+Listed in SlimeEngine's `uwui-needs.md`, section *What the owner's shell and compositor ask*: a
+layer-shell surface as a target, a session-lock surface as a target, one per output, and the
+needs below with the memory budget's rule (SlimeEngine commit `d3a2ef5`, 2026-11-14).
 
 | # | Need | Why | Status |
 |---|---|---|---|
-| 1 | The host's loop takes the application's file descriptors and timers, and runs a foreign runtime's tasks (zbus's `Runtime` trait) with no thread of its own | Services ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md)) | Asked 2026-11-14 |
-| 2 | An input-method client for an on-screen keyboard; a lock surface with its own keyboard and no input method | The on-screen keyboard; the lock screen | Asked 2026-11-14 |
-| 3 | Popups anchored to layer surfaces | The bar's popups | Asked 2026-11-14 |
-| 4 | Surfaces created on demand, releasing their GPU memory while hidden | Memory ([ADR-0014](adr/0014-budgets-measured-as-uwuis.md)) | Asked 2026-11-14 |
-| 5 | One surface per output, outputs coming and going | Several outputs | Asked 2026-11-14 |
-| 6 | The crash boundary uwui promises Yuna, for Hollow's surfaces | One process ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) | Asked 2026-11-14 |
-| 7 | A measure of uwui's CPU renderer against a GPU device for a still bar on the laptop | The lowest tier | Asked 2026-11-14 |
+| 1 | The host's loop takes the application's file descriptors and timers, and runs a foreign runtime's tasks (zbus's `Runtime` trait) with no thread of its own | Services ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md)) | Listed (SlimeEngine `d3a2ef5`) |
+| 2 | An input-method client for an on-screen keyboard; a lock surface with its own keyboard and no input method | The on-screen keyboard; the lock screen | Listed (SlimeEngine `d3a2ef5`) |
+| 3 | Popups anchored to layer surfaces | The bar's popups | Listed (SlimeEngine `d3a2ef5`) |
+| 4 | Surfaces created on demand, releasing their GPU memory while hidden | Memory ([ADR-0014](adr/0014-budgets-measured-as-uwuis.md)) | Listed (SlimeEngine `d3a2ef5`) |
+| 5 | One surface per output, outputs coming and going | Several outputs | Listed (SlimeEngine `d3a2ef5`) |
+| 6 | The crash boundary uwui promises Yuna, for Hollow's surfaces | One process ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) | Listed (SlimeEngine `d3a2ef5`) |
+| 7 | A measure of uwui's CPU renderer against a GPU device for a still bar on the laptop | The lowest tier | Listed (SlimeEngine `d3a2ef5`) |
