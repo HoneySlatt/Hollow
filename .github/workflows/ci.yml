@@ -1,0 +1,36 @@
+# Runs scripts/check.sh, every automated check of the definition of done (AGENTS.md), in the same
+# Nix development shell that agents and the owner use. Actions are pinned to commit SHAs, their
+# release in a comment.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # Every Monday at 06:23 UTC, without a push, so that a project at rest still learns of broken
+  # tools. Off the hour, when GitHub delays scheduled runs.
+  schedule:
+    - cron: "23 6 * * 1"
+
+# A new push to the same branch cancels the run in progress.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        # No later step pushes: the token need not stay in the checkout's configuration.
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086 # v31.11.5
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      # Without the flag, an incomplete flake.lock would be completed with an unpinned revision.
+      - run: nix develop --no-update-lock-file --command scripts/check.sh
