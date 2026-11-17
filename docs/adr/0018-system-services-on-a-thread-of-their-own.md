@@ -1,7 +1,8 @@
 # 0018. System services on a thread of their own
 
-- Status: Accepted; amends [0004](0004-system-services-hollows-own-clients-on-zbus.md) (where the
-  services run)
+- Status: Accepted; supersedes in part [0004](0004-system-services-hollows-own-clients-on-zbus.md)
+  (where the services run), [0017](0017-each-stage-opens-on-named-deliverables.md) (what uwui
+  gives the services)
 - Date: 2026-11-17
 
 ## Context

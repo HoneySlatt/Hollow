@@ -53,6 +53,9 @@ use a private D-Bus bus, a throwaway home and a headless compositor.
 - New behaviour is tested where a test is practical.
 - The budgets the milestone touches are measured and met; the figures go to
   `docs/measurements.md`.
+- The contracts and the scenarios of `docs/ROADMAP.md`'s *Architecture and stability scenarios*
+  that the milestone touches are checked; the evidence and what stays unverified go to
+  `docs/measurements.md` or the milestone's review.
 - `docs/PLAN.md` gives the new status.
 - Every document the change affects is updated and reread as a newcomer would.
 - Every decision a newcomer would question is an ADR.
@@ -90,7 +93,9 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
 
 ## Code rules
 
-- No abstraction without a second concrete use.
+- An abstraction needs a concrete benefit: a second use, a boundary around a dependency still
+  unstable, an invariant it protects, or a test that needs it. Its reason is written where it is
+  declared. No speculative extension points.
 - No reimplementation of the standard library without a measurement.
 - A new dependency needs a reason, an alternative weighed and a license checked; ask the owner.
 - Every `unsafe` block has a `// SAFETY:` comment.
@@ -113,7 +118,9 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
 - Each fact has one home; other documents link to it:
   - the code's documentation: contracts, limits, figures;
   - `docs/ARCHITECTURE.md`: flows across parts;
-  - ADRs: why a decision was taken, what was rejected; only their status changes later;
+  - ADRs: why a decision was taken, what was rejected; only their status changes later; a
+    decision changed is superseded by a new ADR that states its topic whole
+    ([`docs/adr/README.md`](docs/adr/README.md));
   - `docs/PLAN.md`: status and known debt;
   - `CHANGELOG.md`: what changed for users.
 - A change that leaves a document wrong is not finished.

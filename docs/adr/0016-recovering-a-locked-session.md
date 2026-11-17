@@ -1,7 +1,8 @@
 # 0016. Recovering a locked session whose locker is gone
 
-- Status: Accepted; amends [0003](0003-one-process-the-greeter-apart.md) (a crash while locked and
-  its recovery), [0005](0005-the-lock-screen.md) (who holds sleep back and blanks the outputs)
+- Status: Accepted; supersedes in part [0003](0003-one-process-the-greeter-apart.md) (a crash
+  while locked and its recovery), [0005](0005-the-lock-screen.md) (who holds sleep back and blanks
+  the outputs)
 - Date: 2026-11-17
 
 ## Context

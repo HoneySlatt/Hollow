@@ -1,7 +1,7 @@
 # 0004. System services: Hollow's own clients on zbus
 
-- Status: Accepted; amended by [0018](0018-system-services-on-a-thread-of-their-own.md) (where the
-  services run)
+- Status: Accepted; superseded in part by [0018](0018-system-services-on-a-thread-of-their-own.md)
+  (where the services run)
 - Date: 2026-11-14
 
 ## Context

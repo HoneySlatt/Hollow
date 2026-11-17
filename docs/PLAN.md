@@ -39,7 +39,7 @@ recorded in an ADR.
 
 | Finding | Topic | Status |
 |---|---|---|
-| 11 | Hollow's rules aligned with the method | Open |
+| 11 | Hollow's rules aligned with the method | Decided: [ADR-0020](adr/0020-hollows-rules-aligned-with-the-method.md) |
 | 3, 8 | A table of failures; launched applications in scopes of their own | Open |
 | 5 | What rest allows | Open |
 | 7 | The state file after a rollback; a theme switch as a transaction | Open |

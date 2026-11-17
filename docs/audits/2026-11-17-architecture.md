@@ -38,7 +38,7 @@ Ranked by severity. *Due* is the latest point before the fix costs much more.
 | 8 | Applications the launcher starts would die with `hollow` on a restart unless each runs in a scope of its own | Reasoning; systemd's default kill mode to verify | Medium | Before the launcher | Open |
 | 9 | Budgets: CI draws on the CPU, so it cannot show 240 Hz motion or one-frame input; the launcher's budget mixes first answer and full result; the own cost needs a blank layer surface nobody built | ROADMAP's budgets; ADR-0014 | Medium | Stage 2's design | Partly decided: the baseline is a Stage 2 deliverable ([ADR-0017](../adr/0017-each-stage-opens-on-named-deliverables.md)); the rest open |
 | 10 | `needs.md` marked every Yuna need "Asked" though Yuna had decided or planned all but one; the Notification portal, which Yuna's ADR-0057 gives the shell, is missing from Hollow's plan | Yuna's `client-needs.md`, ADR-0057 | Low | At once | `needs.md` fixed; the portal open |
-| 11 | Hollow's rules lag the method of 2026-11-16: "No abstraction without a second concrete use" forbids boundaries the method asks for (a protected invariant, a test seam); the definition of done lacks contracts and stability scenarios; the ROADMAP has no change and failure scenarios; ADRs may be amended rather than superseded whole | AGENTS.md; the method's templates | Medium | Stage 1's design | Open |
+| 11 | Hollow's rules lag the method of 2026-11-16: "No abstraction without a second concrete use" forbids boundaries the method asks for (a protected invariant, a test seam); the definition of done lacks contracts and stability scenarios; the ROADMAP has no change and failure scenarios; ADRs may be amended rather than superseded whole | AGENTS.md; the method's templates | Medium | Stage 1's design | Decided: [ADR-0020](../adr/0020-hollows-rules-aligned-with-the-method.md) |
 | 12 | An outside contributor cannot test without a real session, report a flaw privately, or propose a decision: no `SECURITY.md`, no `CONTRIBUTING.md`, no headless script with a private system bus; the measures relied on the owner's own tools | Repository listing; GitHub's security policy off | Medium | `SECURITY.md` now; the rest at Stage 1's first milestone | [`SECURITY.md`](../../SECURITY.md) added, private reporting turned on; the rest at Stage 1's first milestone |
 
 ## Kept
@@ -61,6 +61,11 @@ Ranked by severity. *Due* is the latest point before the fix costs much more.
   [ADR-0018](../adr/0018-system-services-on-a-thread-of-their-own.md).
 - A secret text field asked of uwui, rather than one drawn by Hollow.
 - `SECURITY.md`, and GitHub's private vulnerability reporting turned on.
+
+At the design session the owner asked for after the audit, the same day:
+
+- Hollow's rules aligned with the method:
+  [ADR-0020](../adr/0020-hollows-rules-aligned-with-the-method.md).
 
 ## Fixed
 

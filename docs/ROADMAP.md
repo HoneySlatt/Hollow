@@ -85,6 +85,22 @@ Without a figure:
 - A crash leaves a report on the machine, which never holds a typed password.
 - Parsers of other programs' data are fuzzed.
 
+### Architecture and stability scenarios
+
+Realistic changes and failures that Hollow's design must survive
+([ADR-0020](adr/0020-hollows-rules-aligned-with-the-method.md)). Each milestone checks the rows it
+touches. A change scenario is checked by tracing the code at the stage's audit, never by building
+the change. Each decision adds its rows here.
+
+| Scenario | Acceptance criterion | Checked by | Evidence |
+|---|---|---|---|
+| `hollow` killed while locked, or crashing at each start while locked | No frame of the session shown; a restarted `hollow` takes the lock over; a crash loop reaches the lock-only mode; logind's `Unlock` from logind unlocks, a forged one does not ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | headless Yuna and a fake logind on a private system bus, Stage 3 | Stage 3's audit |
+| The lock screen's thread blocked | Yuna's ping goes unanswered and Yuna counts the locker dead; a working lock screen always answers ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) | headless Yuna, Stage 3 | Stage 3's audit |
+| A D-Bus service that stops answering | The other services go on; the request fails after its timeout and the service shows as unavailable; from Stage 2, the interface keeps its frame budget ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)) | a fake service on a private bus that never answers, Stage 1 | [`measurements.md`](measurements.md) |
+| A subscription opened and closed 10,000 times | No match rule, task or memory left behind: the bus's match rules and `hollow`'s memory back to where they started | a soak test against fake services, Stage 1 | [`measurements.md`](measurements.md) |
+| A release of uwui that breaks its API | The change stays in the code that draws; the services, the shell's state and the theme engine do not change | traced at each stage's audit | the audits |
+| zbus's runtime replaced | The change stays in the services thread | traced at Stage 1's audit | the audit |
+
 ## 3. Decisions
 
 ### Fixed

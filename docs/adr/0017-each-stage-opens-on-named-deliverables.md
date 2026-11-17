@@ -1,7 +1,8 @@
 # 0017. Each stage opens on named deliverables, each with its project
 
-- Status: Accepted; amends [0002](0002-uwui-and-no-code-before-its-first-stage.md) (when Hollow's
-  code starts)
+- Status: Accepted; supersedes in part [0002](0002-uwui-and-no-code-before-its-first-stage.md)
+  (when Hollow's code starts); superseded in part by
+  [0018](0018-system-services-on-a-thread-of-their-own.md) (what uwui gives the services)
 - Date: 2026-11-17
 
 ## Context
