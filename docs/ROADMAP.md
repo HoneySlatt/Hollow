@@ -94,7 +94,7 @@ Without a figure:
 | What Hollow is | The owner's shell, on Yuna only, optional, replacing Amane ([ADR-0001](adr/0001-what-hollow-is.md)) |
 | Toolkit and order | uwui, which comes first; each stage opens on named deliverables ([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md), [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)) |
 | Processes | One process with the lock screen and the polkit agent; the greeter apart; PAM in a helper ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) |
-| Services | Hollow's own clients on zbus, no tokio ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md)) |
+| Services | Hollow's own clients on zbus, no tokio, on a thread of their own ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md), [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)) |
 | Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)); a locked session recovered in four layers ([ADR-0016](adr/0016-recovering-a-locked-session.md)) |
 | Login screen | `hollow-greeter` on Yuna's greeter mode, under greetd ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)) |
 | Themes | Hollow's own engine ([ADR-0007](adr/0007-themes-hollows-own-engine.md)) |
@@ -132,7 +132,8 @@ session of its own, once the deliverables it names exist and the owner opens it
 
 **Goal.** Everything Hollow knows and does without drawing, tested headless.
 
-- The services on zbus, on uwui's host loop, each tested against a fake service on a private bus.
+- The services on zbus, on the services thread, each tested against a fake service on a private
+  bus.
 - The shell's state, its configuration in KDL and its state file.
 - The notification server, the tray's watcher and host, the polkit agent's protocol.
 - The theme engine: palettes, wallpaper palettes, sunrise and sunset, templates and their reloads,

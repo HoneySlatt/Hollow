@@ -49,7 +49,7 @@ uwui's named yet; [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)
 
 | # | Need | Why | Hollow's stage | Status |
 |---|---|---|---|---|
-| 1 | The host's loop takes the application's file descriptors and timers, and runs a foreign runtime's tasks (zbus's `Runtime` trait) with no thread of its own | Services ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md)) | 1 | Listed; no stage |
+| 1 | The host's loop takes the application's file descriptors and timers, and runs a foreign runtime's tasks (zbus's `Runtime` trait) with no thread of its own | Services ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md)) | — | Listed; to withdraw, replaced by the services thread ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)); to send |
 | 2 | An input-method client for an on-screen keyboard; a lock surface with its own keyboard and no input method | The on-screen keyboard; the lock screen | 3, 5 | Listed; no stage |
 | 3 | Popups anchored to layer surfaces | The bar's popups | 2 | Listed; no stage |
 | 4 | Surfaces created on demand, releasing their GPU memory while hidden | Memory ([ADR-0014](adr/0014-budgets-measured-as-uwuis.md)) | 2 | Listed; no stage |
@@ -63,5 +63,7 @@ uwui's named yet; [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)
 What Stage 1 also takes from uwui, already in uwui's plan:
 
 - its KDL reader, built at SlimeEngine's Stage 6d (uwui's `docs/ROADMAP.md`);
-- its executor, in uwui's first stage;
+- its executor, and its channels through which other threads change the interface, in uwui's
+  first stage (SlimeEngine's ADR-0211), which the services thread uses
+  ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md));
 - its core for agents and its declared actions, at SlimeEngine's Stage 6d.

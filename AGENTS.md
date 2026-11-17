@@ -65,8 +65,10 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
 - One process holds the shell, its lock screen and its polkit agent; the login screen is a
   program of its own ([ADR-0003](docs/adr/0003-one-process-the-greeter-apart.md)).
 - PAM runs in a helper program started for each attempt, never in the shell's process.
-- Services are Hollow's own clients on zbus, on the host's loop, with no tokio
-  ([ADR-0004](docs/adr/0004-system-services-hollows-own-clients-on-zbus.md)).
+- Services are Hollow's own clients on zbus, with no tokio, on a thread of their own that owns
+  them; the interface reaches them by messages
+  ([ADR-0004](docs/adr/0004-system-services-hollows-own-clients-on-zbus.md),
+  [ADR-0018](docs/adr/0018-system-services-on-a-thread-of-their-own.md)).
 - Nothing runs, polls or draws at rest. A service is subscribed only while something shown needs
   it.
 - The interface's thread never waits on a disk, the network or D-Bus.

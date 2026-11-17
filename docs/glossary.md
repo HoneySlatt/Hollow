@@ -36,5 +36,9 @@ that `hollow`'s process never does ([ADR-0003](adr/0003-one-process-the-greeter-
 **Relief.** A new locker taking the lock over from a dead one
 ([ADR-0016](adr/0016-recovering-a-locked-session.md)).
 
+**Services thread.** The thread of `hollow` that runs its D-Bus clients and servers and owns
+their connections and subscriptions; the interface reaches it by messages
+([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)).
+
 **State file.** What Hollow remembers by itself (do not disturb, the last theme), apart from the
 owner's configuration ([ADR-0008](adr/0008-configuration-in-kdl.md)).

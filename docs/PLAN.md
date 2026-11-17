@@ -19,10 +19,11 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
   one ([`needs.md`](needs.md)).
 - An [audit of the architecture](audits/2026-11-17-architecture.md) on 2026-11-17:
   [ADR-0016](adr/0016-recovering-a-locked-session.md) and
-  [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md) decided; its open findings are
+  [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md) and
+  [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md) decided; its open findings are
   in the known debt below.
-- To send, through the owner: Yuna's rows 14 to 18 and uwui's row 10 of [`needs.md`](needs.md),
-  and the request that uwui name a stage for each of Hollow's rows.
+- To send, through the owner: Yuna's rows 14 to 18 of [`needs.md`](needs.md); uwui's row 10, the
+  withdrawal of uwui's row 1, and the request that uwui name a stage for each of Hollow's rows.
 - Next: when Stage 1's deliverables exist and the owner opens it, Stage 1's design session plans
   its milestones here.
 
@@ -38,9 +39,8 @@ Its deliverables ([ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)
 Stages 2 and 3 are in the same ADR.
 
 - uwui's KDL reader, built at SlimeEngine's Stage 6d.
-- uwui's executor, in uwui's first stage, with the host loop that runs Hollow's services as
-  [ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md) sets it (uwui's need 1, no
-  stage yet).
+- uwui's executor and its channels from other threads, in uwui's first stage, which the services
+  thread uses ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)).
 - uwui's core for agents and its declared actions, at SlimeEngine's Stage 6d.
 - `needs.md` read again against what Yuna and uwui have taken.
 
@@ -56,15 +56,14 @@ Stage 1's design session also settles the audit's findings due then (known debt 
 
 From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follows each:
 
-- **Before SlimeEngine's M6d.10b**: whether ADR-0004's services run on uwui's loop or on one
-  thread of zbus's own, feeding uwui's channels (finding 4); uwui's need 1 depends on it.
 - **Before uwui's API is declared stable**: a secret field asked of uwui, kept out of undo, the
   accessibility tree, agents, the clipboard and core dumps (finding 6).
 - **Stage 1's design session**:
   - a table of failures replacing ADR-0003's unconditional containment (finding 3);
   - what rest allows: endpoints, wake-ups caused by others, deadlines the owner sees (finding 5);
-  - who owns the services' connections, subscriptions and tasks, their bounds and their stop
-    (finding 4);
+  - the prototype that confirms the services thread and chooses its runtime; the bounds of the
+    messages between the two threads, where blocking work runs, and how the services stop
+    ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md), finding 4);
   - the state file's envelope and an older Hollow's rule; a theme switch as a transaction
     (finding 7);
   - Hollow's rules aligned with the method: abstractions, definition of done, change and failure
