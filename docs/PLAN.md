@@ -26,16 +26,19 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
   [`needs.md`](needs.md); uwui's rows 10 and 11, the withdrawal of uwui's row 1, and the request
   that uwui name a stage for each of Hollow's rows.
 - On 2026-11-17 the owner asked for a design session, ahead of Stage 1's, to settle the audit's
-  findings 11, 3 with 8, 5, 7 and 10, in that order. It builds nothing; the services thread's
-  prototype stays for Stage 1's design. Where it stands is in *Design of the audit's findings*
-  below.
+  findings 11, 3 with 8, 5, 7 and 10, in that order. It built nothing, and ended on 2026-11-18
+  with [ADR-0020](adr/0020-hollows-rules-aligned-with-the-method.md) to
+  [ADR-0025](adr/0025-the-notification-portal-served-by-hollow.md) (*Design of the audit's
+  findings* below). The services thread's prototype stays for Stage 1's design.
+- To send to Yuna's session, through the owner: rows 19 to 22 of [`needs.md`](needs.md#yuna) and
+  the precision of row 8, approved by the owner on 2026-11-18.
 - Next: when Stage 1's deliverables exist and the owner opens it, Stage 1's design session plans
   its milestones here.
 
 ## Design of the audit's findings
 
-Asked by the owner on 2026-11-17, before Stage 1 opens. Each decision is put to the owner, then
-recorded in an ADR.
+Asked by the owner on 2026-11-17, before Stage 1 opens; done on 2026-11-18. Each decision was put
+to the owner, challenged first where it touched the architecture, then recorded in an ADR.
 
 | Finding | Topic | Status |
 |---|---|---|
