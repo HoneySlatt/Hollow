@@ -22,8 +22,9 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
   [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md) and
   [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md) decided; its open findings are
   in the known debt below.
-- To send, through the owner: Yuna's rows 14 to 18 of [`needs.md`](needs.md); uwui's rows 10 and 11,
-  the withdrawal of uwui's row 1, and the request that uwui name a stage for each of Hollow's rows.
+- Sent on 2026-11-17 to Yuna's and SlimeEngine's sessions: Yuna's rows 14 to 18 of
+  [`needs.md`](needs.md); uwui's rows 10 and 11, the withdrawal of uwui's row 1, and the request
+  that uwui name a stage for each of Hollow's rows.
 - Next: when Stage 1's deliverables exist and the owner opens it, Stage 1's design session plans
   its milestones here.
 
@@ -75,6 +76,9 @@ From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follo
 - **Before the first history is stored**: its encryption, key, retention and erasure (finding 7).
 - **Stage 3's design**: who writes the greeter's folder, with which rights (finding 7); whether
   `hollow` refuses core dumps, and how network and pairing secrets are handled (finding 6).
+- **To put to the owner, before Stage 3's design**: a locker alive but frozen, which none of
+  [ADR-0016](adr/0016-recovering-a-locked-session.md)'s layers covers; asked of Yuna whether its
+  frozen-application screen could treat it as dead.
 - The rivals' figures were measured with software rendering, which inflates the memory of
   programs that draw with OpenGL or Qt Quick ([`measurements.md`](measurements.md)).
 - The laptop and the Steam Deck are not measured.
