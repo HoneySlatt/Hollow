@@ -15,7 +15,8 @@ applications and websites. It runs only on Yuna, the owner's compositor, and dra
 [uwui](https://github.com/HoneySlatt/uwui), the owner's interface toolkit. It aims at the look and
 motion of the most refined current interfaces, at 240 Hz, and at doing nothing at all at rest.
 
-Its code starts after uwui's first stage. Until then it is its design.
+Its code starts once what its first stage needs from uwui exists ([`docs/needs.md`](docs/needs.md)).
+Until then it is its design.
 
 ## Read next
 

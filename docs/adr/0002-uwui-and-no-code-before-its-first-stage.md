@@ -1,6 +1,7 @@
 # 0002. uwui draws Hollow, and no code before uwui's first stage
 
-- Status: Accepted
+- Status: Accepted; amended by [0017](0017-each-stage-opens-on-named-deliverables.md) (when
+  Hollow's code starts)
 - Date: 2026-11-14
 
 ## Context

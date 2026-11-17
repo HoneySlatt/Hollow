@@ -1,6 +1,7 @@
 # 0005. The lock screen
 
-- Status: Accepted
+- Status: Accepted; amended by [0016](0016-recovering-a-locked-session.md) (who holds sleep back
+  and blanks the outputs)
 - Date: 2026-11-14
 
 ## Context

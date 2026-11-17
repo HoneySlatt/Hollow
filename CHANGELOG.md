@@ -5,4 +5,4 @@ Notable changes, for the people who use the project. The format follows
 
 ## [Unreleased]
 
-Nothing to use yet: Hollow is designed, and its code starts after uwui's first stage.
+Nothing to use yet: Hollow is designed, and its code starts once what it needs from uwui exists.

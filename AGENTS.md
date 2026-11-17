@@ -11,8 +11,10 @@ screen, the polkit agent and the theme of the other applications
 is optional above it. It draws with uwui, the owner's interface toolkit. It is under
 GPL-3.0-or-later, and public ([ADR-0012](docs/adr/0012-gpl-3-0-or-later.md)).
 
-Today Hollow has its design and no code. Its code starts after uwui's first stage
-([ADR-0002](docs/adr/0002-uwui-and-no-code-before-its-first-stage.md)).
+Today Hollow has its design and no code. Each stage opens once the deliverables of Yuna and uwui
+it names exist, and the owner opens it; uwui comes first
+([ADR-0002](docs/adr/0002-uwui-and-no-code-before-its-first-stage.md),
+[ADR-0017](docs/adr/0017-each-stage-opens-on-named-deliverables.md)).
 
 Agents develop it; the owner sets its direction and validates its decisions. Anyone must be able to
 understand it from the repository alone. Documentation is part of every deliverable.

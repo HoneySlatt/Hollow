@@ -92,10 +92,10 @@ Without a figure:
 | Topic | Decision |
 |---|---|
 | What Hollow is | The owner's shell, on Yuna only, optional, replacing Amane ([ADR-0001](adr/0001-what-hollow-is.md)) |
-| Toolkit and order | uwui; no code before uwui's first stage ([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md)) |
+| Toolkit and order | uwui, which comes first; each stage opens on named deliverables ([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md), [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)) |
 | Processes | One process with the lock screen and the polkit agent; the greeter apart; PAM in a helper ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) |
 | Services | Hollow's own clients on zbus, no tokio ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md)) |
-| Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)) |
+| Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)); a locked session recovered in four layers ([ADR-0016](adr/0016-recovering-a-locked-session.md)) |
 | Login screen | `hollow-greeter` on Yuna's greeter mode, under greetd ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)) |
 | Themes | Hollow's own engine ([ADR-0007](adr/0007-themes-hollows-own-engine.md)) |
 | Configuration | KDL 2.0, a state file apart ([ADR-0008](adr/0008-configuration-in-kdl.md)) |
@@ -113,7 +113,7 @@ Without a figure:
 |---|---|---|
 | The look | uwui's themes: its own, Glass, Material 3 Expressive | when uwui's themes are ready |
 | Audio | PipeWire, or libpulse through pipewire-pulse | Stage 1, on a prototype's figures |
-| The KDL reader | uwui's, shared with Yuna | uwui's first stage |
+| The KDL reader | uwui's, shared with Yuna | SlimeEngine's Stage 6d, which builds it |
 | The launcher's providers | inside `hollow`, or apart | Stage 2's design |
 | Focus modes | what each allows, schedules, automatic triggers | Stage 5's design |
 | OLED care of the bar | hide, dim or shift, with Yuna | Yuna's Stage 5 |
@@ -124,8 +124,9 @@ Without a figure:
 ### Now: waiting for uwui
 
 Hollow is designed; its needs are with Yuna and uwui
-([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md)). Its first stage opens, with a
-design session of its own, once uwui's first stage is done.
+([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md)). Each stage opens, with a design
+session of its own, once the deliverables it names exist and the owner opens it
+([ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)).
 
 ### Stage 1 — The core → 0.1
 
@@ -155,7 +156,9 @@ tray, the control centre and the calendar.
 
 **Goal.** The lock screen, the polkit prompt and `hollow-greeter` on Yuna's greeter mode.
 
-**Exit.** The lock's and the prompt's budgets met; the greeter logs in to every installed session.
+**Exit.** The lock's and the prompt's budgets met; the locked session recovered after each failure
+[ADR-0016](adr/0016-recovering-a-locked-session.md) names; the greeter logs in to every installed
+session.
 
 ### Stage 4 — Daily use → 0.4
 
