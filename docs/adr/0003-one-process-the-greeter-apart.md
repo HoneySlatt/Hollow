@@ -1,7 +1,8 @@
 # 0003. One process, the greeter apart
 
 - Status: Accepted; superseded in part by [0016](0016-recovering-a-locked-session.md) (a crash
-  while locked and its recovery)
+  while locked and its recovery), [0021](0021-what-survives-a-failure-of-hollow.md) (each
+  component's failure and the restart)
 - Date: 2026-11-14
 
 ## Context

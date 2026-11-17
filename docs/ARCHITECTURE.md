@@ -16,3 +16,6 @@ its shape is set by the ADRs:
   [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)).
 - **Yuna** gives Hollow an interface of commands and events, and includes the colours file
   Hollow's theme engine writes ([`needs.md`](needs.md)).
+- **Failures**: a fault ends `hollow`, which systemd restarts, unless its part is listed as
+  contained; programs the owner launches run as systemd services of their own and outlive it
+  ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)).

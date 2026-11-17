@@ -40,6 +40,7 @@ them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0088,
 | 16 | logind's `Unlock`, its sender checked, unlocks the session when no locker lives | The last way back into a locked session ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b (Yuna's ADR-0086) |
 | 17 | At the lock command and before sleep, Yuna holds logind's sleep delay inhibitor and blanks every output itself, before any client; the locker then takes over | One path for a lock and a relief ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b, Yuna begins every lock and the locker relieves it (Yuna's ADR-0086) |
 | 18 | The dead-locker screen says how to unlock from a virtual terminal | Recovery ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b (Yuna's ADR-0086) |
+| 19 | Yuna's check for frozen applications (Yuna's ADR-0064) covers the shell as it covers the locker: a ping when the owner's input reaches Hollow's surfaces, and the connection of a `hollow` that does not answer ended | A `hollow` frozen while unlocked is restarted by its hang-up watch ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)) | Approved by the owner on 2026-11-18; to send to Yuna's session |
 
 What Yuna asks of Hollow:
 

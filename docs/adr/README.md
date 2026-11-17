@@ -21,7 +21,7 @@ projects are named with their project: "Yuna's ADR-0057".
 |---|---|---|
 | [0001](0001-what-hollow-is.md) | What Hollow is | Accepted |
 | [0002](0002-uwui-and-no-code-before-its-first-stage.md) | uwui draws Hollow, and no code before uwui's first stage | Accepted; superseded in part by 0017 (when Hollow's code starts) |
-| [0003](0003-one-process-the-greeter-apart.md) | One process, the greeter apart | Accepted; superseded in part by 0016 (a crash while locked and its recovery) |
+| [0003](0003-one-process-the-greeter-apart.md) | One process, the greeter apart | Accepted; superseded in part by 0016 (a crash while locked and its recovery), 0021 (each component's failure and the restart) |
 | [0004](0004-system-services-hollows-own-clients-on-zbus.md) | System services: Hollow's own clients on zbus | Accepted; superseded in part by 0018 (where the services run) |
 | [0005](0005-the-lock-screen.md) | The lock screen | Accepted; superseded in part by 0016 (who holds sleep back and blanks the outputs) |
 | [0006](0006-the-login-screen-on-yunas-greeter-mode.md) | The login screen on Yuna's greeter mode | Accepted |
@@ -39,3 +39,4 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0018](0018-system-services-on-a-thread-of-their-own.md) | System services on a thread of their own | Accepted; supersedes in part 0004, 0017 |
 | [0019](0019-the-lock-screen-answers-yunas-ping.md) | The lock screen answers Yuna's ping from the thread that draws it | Accepted |
 | [0020](0020-hollows-rules-aligned-with-the-method.md) | Hollow's rules aligned with the method | Accepted |
+| [0021](0021-what-survives-a-failure-of-hollow.md) | What survives a failure of `hollow` | Accepted; supersedes in part 0003 |

@@ -68,6 +68,9 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
 - One process holds the shell, its lock screen and its polkit agent; the login screen is a
   program of its own ([ADR-0003](docs/adr/0003-one-process-the-greeter-apart.md)).
 - PAM runs in a helper program started for each attempt, never in the shell's process.
+- A fault is fatal unless its part is listed as contained; the lock is never rebuilt in the
+  process, only relieved by a restarted `hollow`
+  ([ADR-0021](docs/adr/0021-what-survives-a-failure-of-hollow.md)).
 - Services are Hollow's own clients on zbus, with no tokio, on a thread of their own that owns
   them; the interface reaches them by messages
   ([ADR-0004](docs/adr/0004-system-services-hollows-own-clients-on-zbus.md),

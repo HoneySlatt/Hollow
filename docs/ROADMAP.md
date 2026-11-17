@@ -96,10 +96,16 @@ the change. Each decision adds its rows here.
 |---|---|---|---|
 | `hollow` killed while locked, or crashing at each start while locked | No frame of the session shown; a restarted `hollow` takes the lock over; a crash loop reaches the lock-only mode; logind's `Unlock` from logind unlocks, a forged one does not ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | headless Yuna and a fake logind on a private system bus, Stage 3 | Stage 3's audit |
 | The lock screen's thread blocked | Yuna's ping goes unanswered and Yuna counts the locker dead; a working lock screen always answers ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) | headless Yuna, Stage 3 | Stage 3's audit |
-| A D-Bus service that stops answering | The other services go on; the request fails after its timeout and the service shows as unavailable; from Stage 2, the interface keeps its frame budget ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)) | a fake service on a private bus that never answers, Stage 1 | [`measurements.md`](measurements.md) |
+| A D-Bus service that stops answering | The other services go on; the request fails after its timeout and the service shows as unavailable; nothing ends `hollow`, even after 30 s; from Stage 2, the interface keeps its frame budget ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)) | a fake service on a private bus that never answers, Stage 1 | [`measurements.md`](measurements.md) |
 | A subscription opened and closed 10,000 times | No match rule, task or memory left behind: the bus's match rules and `hollow`'s memory back to where they started | a soak test against fake services, Stage 1 | [`measurements.md`](measurements.md) |
 | A release of uwui that breaks its API | The change stays in the code that draws; the services, the shell's state and the theme engine do not change | traced at each stage's audit | the audits |
 | zbus's runtime replaced | The change stays in the services thread | traced at Stage 1's audit | the audit |
+| An input that makes a parser panic | That input is refused; nothing else changes ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)) | the fuzzers, Stage 1 | CI |
+| A notification sent while `hollow` restarts | It is delivered once `hollow` holds its name again (ADR-0021) | a private bus with the activation file, Stage 1 | [`measurements.md`](measurements.md) |
+| The interface thread blocked, locked or not | The process ends within a second of Yuna closing the connection, and systemd restarts it; while locked, the relief follows (ADR-0021) | the hang-up watch at Stage 1's prototype; headless Yuna at Stage 3, unlocked once Yuna takes [`needs.md`](needs.md#yuna)'s row 19 | Stage 3's audit |
+| Yuna killed five times in a minute | `hollow` comes back each time, never stopped by systemd's start limit, never in a reduced or lock-only start (ADR-0021) | headless Yuna, Stage 2 | [`measurements.md`](measurements.md) |
+| `hollow` killed ten times beside a program it launched | The program runs on, with its app id as the portal reads it; no failed unit is left (ADR-0021) | a fake systemd user manager on a private bus, Stage 2 | [`measurements.md`](measurements.md) |
+| A crash at each start, unlocked | `hollow` reaches its reduced start and tells the owner (ADR-0021) | a test that makes `hollow` abort at start, Stage 3 | Stage 3's audit |
 
 ## 3. Decisions
 
@@ -109,7 +115,7 @@ the change. Each decision adds its rows here.
 |---|---|
 | What Hollow is | The owner's shell, on Yuna only, optional, replacing Amane ([ADR-0001](adr/0001-what-hollow-is.md)) |
 | Toolkit and order | uwui, which comes first; each stage opens on named deliverables ([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md), [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)) |
-| Processes | One process with the lock screen and the polkit agent; the greeter apart; PAM in a helper ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) |
+| Processes | One process with the lock screen and the polkit agent; the greeter apart; PAM in a helper ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)); a fault fatal unless its part is contained, launched programs in units of their own ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)) |
 | Services | Hollow's own clients on zbus, no tokio, on a thread of their own ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md), [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)) |
 | Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)); a locked session recovered in four layers ([ADR-0016](adr/0016-recovering-a-locked-session.md)); Yuna's ping answered by the lock screen's own thread ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) |
 | Login screen | `hollow-greeter` on Yuna's greeter mode, under greetd ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)) |

@@ -40,7 +40,7 @@ recorded in an ADR.
 | Finding | Topic | Status |
 |---|---|---|
 | 11 | Hollow's rules aligned with the method | Decided: [ADR-0020](adr/0020-hollows-rules-aligned-with-the-method.md) |
-| 3, 8 | A table of failures; launched applications in scopes of their own | Open |
+| 3, 8 | A table of failures; launched applications in units of their own | Decided: [ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md) |
 | 5 | What rest allows | Open |
 | 7 | The state file after a rollback; a theme switch as a transaction | Open |
 | 10 | The Notification portal | Open |
@@ -77,7 +77,8 @@ From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follo
 - **Stage 1's design session**:
   - the prototype that confirms the services thread and chooses its runtime; the bounds of the
     messages between the two threads, where blocking work runs, and how the services stop
-    ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md), finding 4);
+    ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md), finding 4); that the
+    hang-up watch sleeps at rest ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md));
   - findings 3, 5, 7 (the state file and the theme switch), 10 and 11 were moved ahead, to the
     design session above.
 - **Stage 1's first milestone**: `CONTRIBUTING.md`, a headless script with private session and

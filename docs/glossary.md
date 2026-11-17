@@ -13,6 +13,10 @@ the session ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)).
 **Greeter mode.** Yuna run under greetd as the greeter's compositor, without its command socket,
 MCP, global shortcuts, portals or XWayland ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)).
 
+**Hang-up watch.** A thread of `hollow` that sleeps on its copy of Yuna's socket and ends the
+process when Yuna hangs up, so that a frozen `hollow` is restarted
+([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)).
+
 **Lock-only mode.** How `hollow` starts after repeated crashes while the session is locked: the
 lock screen, logind and Yuna alone, the default configuration, no state file
 ([ADR-0016](adr/0016-recovering-a-locked-session.md)).
@@ -32,6 +36,10 @@ wallpapers, themes, the calculator ([ADR-0001](adr/0001-what-hollow-is.md)).
 
 **PAM helper.** The small program started for each attempt to authenticate, which talks to PAM so
 that `hollow`'s process never does ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)).
+
+**Reduced start.** How `hollow` starts after repeated crashes while the session is unlocked: the
+default configuration, no state file and no tray; the bar, the launcher and the polkit agent kept
+([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)).
 
 **Relief.** A new locker taking the lock over from a dead one
 ([ADR-0016](adr/0016-recovering-a-locked-session.md)).
