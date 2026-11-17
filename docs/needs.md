@@ -43,6 +43,7 @@ them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0088,
 | 19 | Yuna's check for frozen applications (Yuna's ADR-0064) covers the shell as it covers the locker: a ping when the owner's input reaches Hollow's surfaces, and the connection of a `hollow` that does not answer ended | A `hollow` frozen while unlocked is restarted by its hang-up watch ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)) | Approved by the owner on 2026-11-18; to send to Yuna's session |
 | 20 | The power state of each output, on or off, on Hollow's interface, given whole at connection and as events | Nothing is shown on an output that is off, so its subscriptions end ([ADR-0022](adr/0022-what-rest-allows.md)) | Approved by the owner on 2026-11-18; to send to Yuna's session |
 | 21 | A subscriber chooses the kinds of events it receives, on the event stream bounded per subscriber (Yuna's ADR-0082) | Hollow wakes only for what it shows, not for every window's change of title ([ADR-0022](adr/0022-what-rest-allows.md)) | Approved by the owner on 2026-11-18; to send to Yuna's session |
+| 22 | Yuna's package installs `yuna-portals.conf`: `yuna-portal` for Yuna's own portals; `hollow`, then `gtk`, for Settings and Notification | Hollow serves both backends; a session works with or without Hollow ([ADR-0025](adr/0025-the-notification-portal-served-by-hollow.md)) | Approved by the owner on 2026-11-18; to send to Yuna's session |
 
 What Yuna asks of Hollow:
 

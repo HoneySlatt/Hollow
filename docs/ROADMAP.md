@@ -180,7 +180,9 @@ session of its own, once the deliverables it names exist and the owner opens it
 - The services on zbus, on the services thread, each tested against a fake service on a private
   bus.
 - The shell's state, its configuration in KDL and its state file.
-- The notification server, the tray's watcher and host, the polkit agent's protocol.
+- The notification server and the Notification portal's backend
+  ([ADR-0025](adr/0025-the-notification-portal-served-by-hollow.md)), the tray's watcher and host,
+  the polkit agent's protocol.
 - The theme engine: palettes, wallpaper palettes, sunrise and sunset, templates and their reloads,
   the Settings portal's backend, Yuna's colours file.
 - `hollow msg` and the agents' actions.

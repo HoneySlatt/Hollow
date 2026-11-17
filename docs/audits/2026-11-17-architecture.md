@@ -37,7 +37,7 @@ Ranked by severity. *Due* is the latest point before the fix costs much more.
 | 7 | Formats without an envelope or a rule for an older Hollow after a rollback; no transaction for a theme switch over about 34 applications; encrypted histories without a decision (key, locked keyring, retention); nobody named to write the greeter's folder, the class of CVE-2026-25704 | ADR-0006, 0007, 0008; ROADMAP's histories budget | Medium | Before a format is published | Partly decided: [ADR-0023](../adr/0023-formats-across-versions.md), [ADR-0024](../adr/0024-a-theme-switch-completed-after-any-interruption.md); the histories and the greeter's folder in the PLAN's debt |
 | 8 | Applications the launcher starts would die with `hollow` on a restart unless each runs in a scope of its own | Reasoning; systemd's default kill mode to verify | Medium | Before the launcher | Decided: [ADR-0021](../adr/0021-what-survives-a-failure-of-hollow.md) |
 | 9 | Budgets: CI draws on the CPU, so it cannot show 240 Hz motion or one-frame input; the launcher's budget mixes first answer and full result; the own cost needs a blank layer surface nobody built | ROADMAP's budgets; ADR-0014 | Medium | Stage 2's design | Partly decided: the baseline is a Stage 2 deliverable ([ADR-0017](../adr/0017-each-stage-opens-on-named-deliverables.md)); the rest open |
-| 10 | `needs.md` marked every Yuna need "Asked" though Yuna had decided or planned all but one; the Notification portal, which Yuna's ADR-0057 gives the shell, is missing from Hollow's plan | Yuna's `client-needs.md`, ADR-0057 | Low | At once | `needs.md` fixed; the portal open |
+| 10 | `needs.md` marked every Yuna need "Asked" though Yuna had decided or planned all but one; the Notification portal, which Yuna's ADR-0057 gives the shell, is missing from Hollow's plan | Yuna's `client-needs.md`, ADR-0057 | Low | At once | `needs.md` fixed; the portal decided: [ADR-0025](../adr/0025-the-notification-portal-served-by-hollow.md) |
 | 11 | Hollow's rules lag the method of 2026-11-16: "No abstraction without a second concrete use" forbids boundaries the method asks for (a protected invariant, a test seam); the definition of done lacks contracts and stability scenarios; the ROADMAP has no change and failure scenarios; ADRs may be amended rather than superseded whole | AGENTS.md; the method's templates | Medium | Stage 1's design | Decided: [ADR-0020](../adr/0020-hollows-rules-aligned-with-the-method.md) |
 | 12 | An outside contributor cannot test without a real session, report a flaw privately, or propose a decision: no `SECURITY.md`, no `CONTRIBUTING.md`, no headless script with a private system bus; the measures relied on the owner's own tools | Repository listing; GitHub's security policy off | Medium | `SECURITY.md` now; the rest at Stage 1's first milestone | [`SECURITY.md`](../../SECURITY.md) added, private reporting turned on; the rest at Stage 1's first milestone |
 
@@ -75,6 +75,9 @@ At the design session the owner asked for after the audit, on 2026-11-17 and 202
   completed after any interruption:
   [ADR-0024](../adr/0024-a-theme-switch-completed-after-any-interruption.md); a precision of row 8
   of [`needs.md`](../needs.md#yuna) to ask of Yuna.
+- The Notification portal served by Hollow:
+  [ADR-0025](../adr/0025-the-notification-portal-served-by-hollow.md); row 22 of
+  [`needs.md`](../needs.md#yuna) to ask of Yuna.
 
 ## Fixed
 

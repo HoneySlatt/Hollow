@@ -43,7 +43,7 @@ recorded in an ADR.
 | 3, 8 | A table of failures; launched applications in units of their own | Decided: [ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md) |
 | 5 | What rest allows | Decided: [ADR-0022](adr/0022-what-rest-allows.md) |
 | 7 | The state file after a rollback; a theme switch as a transaction | Decided: [ADR-0023](adr/0023-formats-across-versions.md), [ADR-0024](adr/0024-a-theme-switch-completed-after-any-interruption.md) |
-| 10 | The Notification portal | Open |
+| 10 | The Notification portal | Decided: [ADR-0025](adr/0025-the-notification-portal-served-by-hollow.md) |
 
 ## Status
 
