@@ -22,7 +22,7 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0001](0001-what-hollow-is.md) | What Hollow is | Accepted |
 | [0002](0002-uwui-and-no-code-before-its-first-stage.md) | uwui draws Hollow, and no code before uwui's first stage | Accepted; superseded in part by 0017 (when Hollow's code starts) |
 | [0003](0003-one-process-the-greeter-apart.md) | One process, the greeter apart | Accepted; superseded in part by 0016 (a crash while locked and its recovery), 0021 (each component's failure and the restart) |
-| [0004](0004-system-services-hollows-own-clients-on-zbus.md) | System services: Hollow's own clients on zbus | Accepted; superseded in part by 0018 (where the services run) |
+| [0004](0004-system-services-hollows-own-clients-on-zbus.md) | System services: Hollow's own clients on zbus | Accepted; superseded in part by 0018 (where the services run), 0022 (what a service follows) |
 | [0005](0005-the-lock-screen.md) | The lock screen | Accepted; superseded in part by 0016 (who holds sleep back and blanks the outputs) |
 | [0006](0006-the-login-screen-on-yunas-greeter-mode.md) | The login screen on Yuna's greeter mode | Accepted |
 | [0007](0007-themes-hollows-own-engine.md) | Themes: Hollow's own engine | Accepted |
@@ -32,7 +32,7 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0011](0011-replacing-amane-parity-then-the-switch.md) | Replacing Amane: parity, then the switch | Accepted |
 | [0012](0012-gpl-3-0-or-later.md) | GPL-3.0-or-later, public from the start | Accepted |
 | [0013](0013-accessibility-keyboard-and-reduced-motion-first.md) | Accessibility: the keyboard and reduced motion first | Accepted |
-| [0014](0014-budgets-measured-as-uwuis.md) | Budgets measured as uwui's | Accepted |
+| [0014](0014-budgets-measured-as-uwuis.md) | Budgets measured as uwui's | Accepted; superseded in part by 0022 (the rest budget) |
 | [0015](0015-what-hollow-asks-of-yuna-and-uwui.md) | What Hollow asks of Yuna and uwui | Accepted |
 | [0016](0016-recovering-a-locked-session.md) | Recovering a locked session whose locker is gone | Accepted; supersedes in part 0003, 0005 |
 | [0017](0017-each-stage-opens-on-named-deliverables.md) | Each stage opens on named deliverables, each with its project | Accepted; supersedes in part 0002; superseded in part by 0018 (what uwui gives the services) |
@@ -40,3 +40,4 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0019](0019-the-lock-screen-answers-yunas-ping.md) | The lock screen answers Yuna's ping from the thread that draws it | Accepted |
 | [0020](0020-hollows-rules-aligned-with-the-method.md) | Hollow's rules aligned with the method | Accepted |
 | [0021](0021-what-survives-a-failure-of-hollow.md) | What survives a failure of `hollow` | Accepted; supersedes in part 0003 |
+| [0022](0022-what-rest-allows.md) | What rest allows | Accepted; supersedes in part 0004, 0014 |

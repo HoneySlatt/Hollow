@@ -3,6 +3,10 @@
 The terms this project uses in a sense of its own, in alphabetical order. Each says what it means
 here, and links to where it is decided.
 
+**At rest.** The owner is not using Hollow and nothing it shows changes. What is *shown* is what
+the owner can see: nothing on an output that is off, only the lock screen while locked
+([ADR-0022](adr/0022-what-rest-allows.md)).
+
 **Dead locker.** A lock screen's client that died while the session is locked. The session stays
 locked and Yuna shows a screen of its own until a new locker relieves it
 ([ADR-0016](adr/0016-recovering-a-locked-session.md)).

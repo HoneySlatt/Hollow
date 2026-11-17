@@ -75,8 +75,9 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
   them; the interface reaches them by messages
   ([ADR-0004](docs/adr/0004-system-services-hollows-own-clients-on-zbus.md),
   [ADR-0018](docs/adr/0018-system-services-on-a-thread-of-their-own.md)).
-- Nothing runs, polls or draws at rest. A service is subscribed only while something shown needs
-  it.
+- Nothing polls or draws at rest. Hollow listens without waking, holds a subscription only while
+  what it feeds is shown, and wakes only for the ROADMAP's table of wake-ups at rest
+  ([ADR-0022](docs/adr/0022-what-rest-allows.md)).
 - The interface's thread never waits on a disk, the network or D-Bus.
 - The lock screen answers Yuna's ping from the thread that draws it, never from a thread apart
   ([ADR-0019](docs/adr/0019-the-lock-screen-answers-yunas-ping.md)).

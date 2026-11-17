@@ -1,6 +1,6 @@
 # 0014. Budgets measured as uwui's
 
-- Status: Accepted
+- Status: Accepted; superseded in part by [0022](0022-what-rest-allows.md) (the rest budget)
 - Date: 2026-11-14
 
 ## Context
