@@ -18,7 +18,7 @@ window previews; the colours file Yuna includes; idle, which runs Hollow's lock 
 ADR-0082 puts that interface in a crate of its own, `yuna-ipc`, under semantic versions, with one
 event stream bounded per subscriber and a resync event at the bound. Yuna's ADR-0079 announces
 every change to its contracts before 1.0; Yuna's `CONTRIBUTING.md` lists Hollow's interface among
-them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0087).
+them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0088, which superseded ADR-0087).
 
 | # | Need | Why | Status |
 |---|---|---|---|
@@ -45,7 +45,7 @@ What Yuna asks of Hollow:
 
 | Need | Why | Hollow's answer |
 |---|---|---|
-| The locker binds `xdg_wm_base` and answers Yuna's ping from a thread that never blocks | A frozen locker counted as dead (Yuna's ADR-0087) | Accepted: from the thread that draws the lock screen ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) |
+| The locker binds `xdg_wm_base` and answers Yuna's ping from a thread that never blocks | A frozen locker counted as dead (Yuna's ADR-0088) | Accepted: from the thread that draws the lock screen ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) |
 
 ## uwui
 
