@@ -29,7 +29,7 @@ them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0088,
 | 5 | A way for the on-screen keyboard to send keys (Yuna's ADR-0058 forbids `virtual-keyboard` on the owner's seat), and when to show it | The on-screen keyboard | Planned: designed at Yuna's Stage 4, with the Steam Deck's touch; an EI path is a candidate |
 | 6 | The keyboard layout and its changes, as an event | The bar, the lock screen | Planned: Yuna's Stage 2 |
 | 7 | A logout command | The session menu | Planned: Yuna's Stage 2 |
-| 8 | The start and end of a theme switch, for Yuna's cross-fade | Themes ([ADR-0007](adr/0007-themes-hollows-own-engine.md)) | Planned: Yuna's Stage 6, with the cross-fade |
+| 8 | The start and end of a theme switch, for Yuna's cross-fade; each carries the switch's generation, and the screen stays frozen until Hollow's end or Yuna's own bound, whichever comes first | Themes ([ADR-0007](adr/0007-themes-hollows-own-engine.md), [ADR-0024](adr/0024-a-theme-switch-completed-after-any-interruption.md)) | Planned: Yuna's Stage 6, with the cross-fade; the generation and the bound approved by the owner on 2026-11-18, to send to Yuna's session |
 | 9 | A layer for desktop widgets above the wallpaper | Widgets | Planned: `wlr-layer-shell`'s background and bottom layers above Yuna's wallpaper, Yuna's Stage 2 |
 | 10 | Stable output names | Settings per output | Planned: output ids already follow the monitor (Yuna's ADR-0020); their names given to the shell at Yuna's Stage 2 |
 | 11 | OLED care of the bar, the most static element on screen | Yuna's Stage 5 | Planned: Yuna's Stage 5 |

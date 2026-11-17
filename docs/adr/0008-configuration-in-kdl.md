@@ -1,6 +1,7 @@
 # 0008. Configuration in KDL
 
-- Status: Accepted
+- Status: Accepted; superseded in part by [0023](0023-formats-across-versions.md) (the state file,
+  and errors in the configuration)
 - Date: 2026-11-14
 
 ## Context

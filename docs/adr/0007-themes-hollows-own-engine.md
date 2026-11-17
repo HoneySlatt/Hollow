@@ -1,6 +1,7 @@
 # 0007. Themes: Hollow's own engine
 
-- Status: Accepted
+- Status: Accepted; superseded in part by [0024](0024-a-theme-switch-completed-after-any-interruption.md)
+  (how a switch is applied and announced)
 - Date: 2026-11-14
 
 ## Context

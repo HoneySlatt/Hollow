@@ -25,8 +25,8 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0004](0004-system-services-hollows-own-clients-on-zbus.md) | System services: Hollow's own clients on zbus | Accepted; superseded in part by 0018 (where the services run), 0022 (what a service follows) |
 | [0005](0005-the-lock-screen.md) | The lock screen | Accepted; superseded in part by 0016 (who holds sleep back and blanks the outputs) |
 | [0006](0006-the-login-screen-on-yunas-greeter-mode.md) | The login screen on Yuna's greeter mode | Accepted |
-| [0007](0007-themes-hollows-own-engine.md) | Themes: Hollow's own engine | Accepted |
-| [0008](0008-configuration-in-kdl.md) | Configuration in KDL | Accepted |
+| [0007](0007-themes-hollows-own-engine.md) | Themes: Hollow's own engine | Accepted; superseded in part by 0024 (how a switch is applied and announced) |
+| [0008](0008-configuration-in-kdl.md) | Configuration in KDL | Accepted; superseded in part by 0023 (the state file, and errors in the configuration) |
 | [0009](0009-shortcuts-commands-and-agents.md) | Shortcuts, commands and agents | Accepted |
 | [0010](0010-over-a-fullscreen-game-or-film-a-setting.md) | Over a fullscreen game or film: a setting | Accepted |
 | [0011](0011-replacing-amane-parity-then-the-switch.md) | Replacing Amane: parity, then the switch | Accepted |
@@ -41,3 +41,5 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0020](0020-hollows-rules-aligned-with-the-method.md) | Hollow's rules aligned with the method | Accepted |
 | [0021](0021-what-survives-a-failure-of-hollow.md) | What survives a failure of `hollow` | Accepted; supersedes in part 0003 |
 | [0022](0022-what-rest-allows.md) | What rest allows | Accepted; supersedes in part 0004, 0014 |
+| [0023](0023-formats-across-versions.md) | Formats across versions | Accepted; supersedes in part 0008 |
+| [0024](0024-a-theme-switch-completed-after-any-interruption.md) | A theme switch completed after any interruption | Accepted; supersedes in part 0007 |

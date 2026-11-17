@@ -123,6 +123,11 @@ the change. Each decision adds its rows here.
 | Fake NetworkManager and UPower at their real cadence | Only the table's wake-ups; a frame only when the level shown changes (ADR-0022) | fake services on a private bus, Stage 1; the frames at Stage 2 | [`measurements.md`](measurements.md) |
 | Ten windows retitled each second, a tray icon changed ten times a second | Wake-ups bounded per sender (ADR-0022) | headless Yuna and a fake tray item, Stage 2 | [`measurements.md`](measurements.md) |
 | The clock set back, a resume after eight hours, a new time zone | Each deadline fires once, at its new time (ADR-0022) | a manual clock, Stage 1 | CI |
+| An upgrade, a rollback, a change, an upgrade again | The newest change is kept ([ADR-0023](adr/0023-formats-across-versions.md)) | tests on a throwaway state folder, Stage 1 | CI |
+| Every published format read by an older and a newer Hollow | Its fixture migrates; an older reader keeps unknown nodes byte for byte; the greeter shows any appearance file (ADR-0023) | fixtures per version, Stage 1; the greeter at Stage 3 | CI |
+| An unknown node in the configuration at start | That node alone falls back; a restricting section falls back to its strictest default (ADR-0023) | tests, Stage 1 | CI |
+| `hollow` killed at each file and at each reload of a theme switch | After a start, every fake application shows the final theme; a start after a clean switch reloads nothing ([ADR-0024](adr/0024-a-theme-switch-completed-after-any-interruption.md)) | fake applications on a test profile, Stage 1 | CI |
+| The owner's applications switched on the laptop | Within Yuna's bound on its fade (ADR-0024) | the engine's log, Stage 1, then with Yuna's fade | [`measurements.md`](measurements.md) |
 
 ## 3. Decisions
 
@@ -137,8 +142,8 @@ the change. Each decision adds its rows here.
 | Rest | Listening costs nothing; a subscription only while shown; wake-ups listed in a closed table ([ADR-0022](adr/0022-what-rest-allows.md)) |
 | Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)); a locked session recovered in four layers ([ADR-0016](adr/0016-recovering-a-locked-session.md)); Yuna's ping answered by the lock screen's own thread ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) |
 | Login screen | `hollow-greeter` on Yuna's greeter mode, under greetd ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)) |
-| Themes | Hollow's own engine ([ADR-0007](adr/0007-themes-hollows-own-engine.md)) |
-| Configuration | KDL 2.0, a state file apart ([ADR-0008](adr/0008-configuration-in-kdl.md)) |
+| Themes | Hollow's own engine ([ADR-0007](adr/0007-themes-hollows-own-engine.md)); a switch completed after any interruption ([ADR-0024](adr/0024-a-theme-switch-completed-after-any-interruption.md)) |
+| Configuration | KDL 2.0, a state file apart ([ADR-0008](adr/0008-configuration-in-kdl.md)); formats additive, one file per incompatible format, the configuration falling back node by node ([ADR-0023](adr/0023-formats-across-versions.md)) |
 | Shortcuts and agents | Keys bound in Yuna; agents through uwui's core, with consent ([ADR-0009](adr/0009-shortcuts-commands-and-agents.md)) |
 | Fullscreen | A setting, *nothing unless asked* by default ([ADR-0010](adr/0010-over-a-fullscreen-game-or-film-a-setting.md)) |
 | Replacing Amane | Parity, then the switch ([ADR-0011](adr/0011-replacing-amane-parity-then-the-switch.md)) |
