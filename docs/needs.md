@@ -17,13 +17,14 @@ fullscreen), urgent windows, the bell, the wallpaper shown and a request to show
 window previews; the colours file Yuna includes; idle, which runs Hollow's lock command. Yuna's
 ADR-0082 puts that interface in a crate of its own, `yuna-ipc`, under semantic versions, with one
 event stream bounded per subscriber and a resync event at the bound. Yuna's ADR-0079 announces
-every change to its contracts before 1.0.
+every change to its contracts before 1.0; Yuna's `CONTRIBUTING.md` lists Hollow's interface among
+them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0087).
 
 | # | Need | Why | Status |
 |---|---|---|---|
 | 1 | Which program captures or casts the screen, as an event | The shared-screen indicator ([ADR-0001](adr/0001-what-hollow-is.md)) | Planned: Yuna's Stage 2 (Yuna's ADR-0065) |
 | 2 | A greeter mode under greetd: no command socket, MCP, global shortcuts, portals nor XWayland; virtual terminals kept | The login screen ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)) | Planned: Yuna's Stage 2 (Yuna's ADR-0065) |
-| 3 | A new locker may replace a dead one; every output blanked at once when locking | The lock screen ([ADR-0005](adr/0005-the-lock-screen.md)) | The relief planned: Yuna's Stage 2 (Yuna's ADR-0065). The blanking not answered; asked again as row 17 |
+| 3 | A new locker may replace a dead one; every output blanked at once when locking | The lock screen ([ADR-0005](adr/0005-the-lock-screen.md)) | Planned: Yuna's Stage 2b, the blanking with row 17 (Yuna's ADR-0065, ADR-0086) |
 | 4 | Key bindings that send a named event to Hollow | Shortcuts ([ADR-0009](adr/0009-shortcuts-commands-and-agents.md)) | Planned: part of Hollow's interface (Yuna's ADR-0064), its form designed at Yuna's Stage 2 |
 | 5 | A way for the on-screen keyboard to send keys (Yuna's ADR-0058 forbids `virtual-keyboard` on the owner's seat), and when to show it | The on-screen keyboard | Planned: designed at Yuna's Stage 4, with the Steam Deck's touch; an EI path is a candidate |
 | 6 | The keyboard layout and its changes, as an event | The bar, the lock screen | Planned: Yuna's Stage 2 |
@@ -34,11 +35,11 @@ every change to its contracts before 1.0.
 | 11 | OLED care of the bar, the most static element on screen | Yuna's Stage 5 | Planned: Yuna's Stage 5 |
 | 12 | Blur behind Hollow's surfaces; which of them are never captured | The look; privacy | Planned: blur at Yuna's Stage 6; never-captured surfaces at Yuna's Stage 2 |
 | 13 | The layer shell and the session lock in headless Yuna, before Hollow's surfaces | Tests of Stages 2 and 3; until then, headless sway | Listed as useful early; no stage |
-| 14 | The lock's state on Hollow's interface, given in full at connection: locked or not, and whether its locker lives | A restarted `hollow` takes the lock over ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Asked 2026-11-17 |
-| 15 | The relief of a dead locker reserved to Hollow's role, where Yuna knows it (Yuna's ADR-0082) | The lock ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Asked 2026-11-17 |
-| 16 | logind's `Unlock`, its sender checked, unlocks the session when no locker lives | The last way back into a locked session ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Asked 2026-11-17 |
-| 17 | At the lock command and before sleep, Yuna holds logind's sleep delay inhibitor and blanks every output itself, before any client; the locker then takes over | One path for a lock and a relief ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Asked 2026-11-17; its form is Yuna's |
-| 18 | The dead-locker screen says how to unlock from a virtual terminal | Recovery ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Asked 2026-11-17 |
+| 14 | The lock's state on Hollow's interface, given in full at connection: locked or not, and whether its locker lives | A restarted `hollow` takes the lock over ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b (Yuna's ADR-0086) |
+| 15 | The relief of a dead locker reserved to Hollow's role, where Yuna knows it (Yuna's ADR-0082) | The lock ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b, reserved to the locker the configuration names, Hollow by default (Yuna's ADR-0086) |
+| 16 | logind's `Unlock`, its sender checked, unlocks the session when no locker lives | The last way back into a locked session ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b (Yuna's ADR-0086) |
+| 17 | At the lock command and before sleep, Yuna holds logind's sleep delay inhibitor and blanks every output itself, before any client; the locker then takes over | One path for a lock and a relief ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b, Yuna begins every lock and the locker relieves it (Yuna's ADR-0086) |
+| 18 | The dead-locker screen says how to unlock from a virtual terminal | Recovery ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b (Yuna's ADR-0086) |
 
 ## uwui
 
