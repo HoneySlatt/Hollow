@@ -59,6 +59,7 @@ uwui's named yet; [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)
 | 8 | A layer-shell surface as a target | The bar and panels | 2 | Listed; no stage |
 | 9 | A session-lock surface as a target, one per output | The lock screen | 3 | Listed; no stage |
 | 10 | A blank layer surface per output that only clears and presents, the baseline of the own cost | Memory ([ADR-0014](adr/0014-budgets-measured-as-uwuis.md)) | 2 | Named beside the list, not a row of it; to send as a row |
+| 11 | A secret text field: its value kept out of undo, the accessibility tree and agents' reading (shown as a protected field), the clipboard and input methods; its memory cleared after use and kept out of core dumps | The lock screen's and the polkit prompt's passwords ([`AGENTS.md`](../AGENTS.md#rules-the-code-depends-on)); any application of uwui's needs it too | 3 | To send |
 
 What Stage 1 also takes from uwui, already in uwui's plan:
 

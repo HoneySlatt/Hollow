@@ -22,8 +22,8 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
   [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md) and
   [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md) decided; its open findings are
   in the known debt below.
-- To send, through the owner: Yuna's rows 14 to 18 of [`needs.md`](needs.md); uwui's row 10, the
-  withdrawal of uwui's row 1, and the request that uwui name a stage for each of Hollow's rows.
+- To send, through the owner: Yuna's rows 14 to 18 of [`needs.md`](needs.md); uwui's rows 10 and 11,
+  the withdrawal of uwui's row 1, and the request that uwui name a stage for each of Hollow's rows.
 - Next: when Stage 1's deliverables exist and the owner opens it, Stage 1's design session plans
   its milestones here.
 
@@ -56,8 +56,6 @@ Stage 1's design session also settles the audit's findings due then (known debt 
 
 From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follows each:
 
-- **Before uwui's API is declared stable**: a secret field asked of uwui, kept out of undo, the
-  accessibility tree, agents, the clipboard and core dumps (finding 6).
 - **Stage 1's design session**:
   - a table of failures replacing ADR-0003's unconditional containment (finding 3);
   - what rest allows: endpoints, wake-ups caused by others, deadlines the owner sees (finding 5);
@@ -71,12 +69,12 @@ From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follo
   - the Notification portal's backend (finding 10).
 - **Stage 1's first milestone**: `CONTRIBUTING.md`, a headless script with private session and
   system buses, the list of contracts (finding 12).
-- **At once, on the owner's go**: `SECURITY.md` (finding 12).
 - **Stage 2's design**: budgets checked on the GPU apart from CI's; the launcher's first answer and
   full result budgeted apart (finding 9); applications launched in scopes of their own
   (finding 8).
 - **Before the first history is stored**: its encryption, key, retention and erasure (finding 7).
-- **Stage 3's design**: who writes the greeter's folder, with which rights (finding 7).
+- **Stage 3's design**: who writes the greeter's folder, with which rights (finding 7); whether
+  `hollow` refuses core dumps, and how network and pairing secrets are handled (finding 6).
 - The rivals' figures were measured with software rendering, which inflates the memory of
   programs that draw with OpenGL or Qt Quick ([`measurements.md`](measurements.md)).
 - The laptop and the Steam Deck are not measured.
