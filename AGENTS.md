@@ -72,6 +72,8 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
 - Nothing runs, polls or draws at rest. A service is subscribed only while something shown needs
   it.
 - The interface's thread never waits on a disk, the network or D-Bus.
+- The lock screen answers Yuna's ping from the thread that draws it, never from a thread apart
+  ([ADR-0019](docs/adr/0019-the-lock-screen-answers-yunas-ping.md)).
 - What Yuna does (the wallpaper, idle, captures, night light, brightness) is never done again in
   Hollow. A change to the contract with Yuna is decided with the owner and written in both
   repositories: here in `docs/needs.md`, in Yuna by Yuna's own session.

@@ -41,6 +41,12 @@ them. A locker that stops answering Yuna's ping counts as dead (Yuna's ADR-0087)
 | 17 | At the lock command and before sleep, Yuna holds logind's sleep delay inhibitor and blanks every output itself, before any client; the locker then takes over | One path for a lock and a relief ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b, Yuna begins every lock and the locker relieves it (Yuna's ADR-0086) |
 | 18 | The dead-locker screen says how to unlock from a virtual terminal | Recovery ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | Planned: Yuna's Stage 2b (Yuna's ADR-0086) |
 
+What Yuna asks of Hollow:
+
+| Need | Why | Hollow's answer |
+|---|---|---|
+| The locker binds `xdg_wm_base` and answers Yuna's ping from a thread that never blocks | A frozen locker counted as dead (Yuna's ADR-0087) | Accepted: from the thread that draws the lock screen ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) |
+
 ## uwui
 
 Listed in SlimeEngine's `uwui-needs.md`, section *What the owner's shell and compositor ask*
@@ -58,7 +64,7 @@ asked of SlimeEngine's session on 2026-11-17.
 | 6 | The crash boundary uwui promises Yuna, for Hollow's surfaces | One process ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) | 2 | Listed; no stage. Yuna's ADR-0084 makes that boundary a task inside Yuna's process, which does not apply to a client: to restate ([audit](audits/2026-11-17-architecture.md)) |
 | 7 | A measure of uwui's CPU renderer against a GPU device for a still bar on the laptop | The lowest tier | 2 | Listed; wished before Hollow's first code |
 | 8 | A layer-shell surface as a target | The bar and panels | 2 | Listed; no stage |
-| 9 | A session-lock surface as a target, one per output | The lock screen | 3 | Listed; no stage |
+| 9 | A session-lock surface as a target, one per output; it binds `xdg_wm_base` and answers Yuna's ping when it reads the connection's events | The lock screen; a frozen one found by Yuna ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) | 3 | Listed; no stage; the ping, a precision asked 2026-11-17 |
 | 10 | A blank layer surface per output that only clears and presents, the baseline of the own cost | Memory ([ADR-0014](adr/0014-budgets-measured-as-uwuis.md)) | 2 | Named beside the list, not a row of it; asked as a row 2026-11-17 |
 | 11 | A secret text field: its value kept out of undo, the accessibility tree and agents' reading (shown as a protected field), the clipboard and input methods; its memory cleared after use and kept out of core dumps | The lock screen's and the polkit prompt's passwords ([`AGENTS.md`](../AGENTS.md#rules-the-code-depends-on)); any application of uwui's needs it too | 3 | Asked 2026-11-17 |
 

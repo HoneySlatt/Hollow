@@ -95,7 +95,7 @@ Without a figure:
 | Toolkit and order | uwui, which comes first; each stage opens on named deliverables ([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md), [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)) |
 | Processes | One process with the lock screen and the polkit agent; the greeter apart; PAM in a helper ([ADR-0003](adr/0003-one-process-the-greeter-apart.md)) |
 | Services | Hollow's own clients on zbus, no tokio, on a thread of their own ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md), [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md)) |
-| Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)); a locked session recovered in four layers ([ADR-0016](adr/0016-recovering-a-locked-session.md)) |
+| Lock screen | `ext-session-lock-v1`, in `hollow` ([ADR-0005](adr/0005-the-lock-screen.md)); a locked session recovered in four layers ([ADR-0016](adr/0016-recovering-a-locked-session.md)); Yuna's ping answered by the lock screen's own thread ([ADR-0019](adr/0019-the-lock-screen-answers-yunas-ping.md)) |
 | Login screen | `hollow-greeter` on Yuna's greeter mode, under greetd ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)) |
 | Themes | Hollow's own engine ([ADR-0007](adr/0007-themes-hollows-own-engine.md)) |
 | Configuration | KDL 2.0, a state file apart ([ADR-0008](adr/0008-configuration-in-kdl.md)) |

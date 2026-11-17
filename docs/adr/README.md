@@ -28,3 +28,4 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0016](0016-recovering-a-locked-session.md) | Recovering a locked session whose locker is gone | Accepted; amends 0003, 0005 |
 | [0017](0017-each-stage-opens-on-named-deliverables.md) | Each stage opens on named deliverables, each with its project | Accepted; amends 0002 |
 | [0018](0018-system-services-on-a-thread-of-their-own.md) | System services on a thread of their own | Accepted; amends 0004 |
+| [0019](0019-the-lock-screen-answers-yunas-ping.md) | The lock screen answers Yuna's ping from the thread that draws it | Accepted |
