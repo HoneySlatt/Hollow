@@ -25,8 +25,25 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
 - Sent on 2026-11-17 to Yuna's and SlimeEngine's sessions: Yuna's rows 14 to 18 of
   [`needs.md`](needs.md); uwui's rows 10 and 11, the withdrawal of uwui's row 1, and the request
   that uwui name a stage for each of Hollow's rows.
+- On 2026-11-17 the owner asked for a design session, ahead of Stage 1's, to settle the audit's
+  findings 11, 3 with 8, 5, 7 and 10, in that order. It builds nothing; the services thread's
+  prototype stays for Stage 1's design. Where it stands is in *Design of the audit's findings*
+  below.
 - Next: when Stage 1's deliverables exist and the owner opens it, Stage 1's design session plans
   its milestones here.
+
+## Design of the audit's findings
+
+Asked by the owner on 2026-11-17, before Stage 1 opens. Each decision is put to the owner, then
+recorded in an ADR.
+
+| Finding | Topic | Status |
+|---|---|---|
+| 11 | Hollow's rules aligned with the method | Open |
+| 3, 8 | A table of failures; launched applications in scopes of their own | Open |
+| 5 | What rest allows | Open |
+| 7 | The state file after a rollback; a theme switch as a transaction | Open |
+| 10 | The Notification portal | Open |
 
 ## Status
 
@@ -58,21 +75,15 @@ Stage 1's design session also settles the audit's findings due then (known debt 
 From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follows each:
 
 - **Stage 1's design session**:
-  - a table of failures replacing ADR-0003's unconditional containment (finding 3);
-  - what rest allows: endpoints, wake-ups caused by others, deadlines the owner sees (finding 5);
   - the prototype that confirms the services thread and chooses its runtime; the bounds of the
     messages between the two threads, where blocking work runs, and how the services stop
     ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md), finding 4);
-  - the state file's envelope and an older Hollow's rule; a theme switch as a transaction
-    (finding 7);
-  - Hollow's rules aligned with the method: abstractions, definition of done, change and failure
-    scenarios in the ROADMAP, ADRs superseded whole (finding 11);
-  - the Notification portal's backend (finding 10).
+  - findings 3, 5, 7 (the state file and the theme switch), 10 and 11 were moved ahead, to the
+    design session above.
 - **Stage 1's first milestone**: `CONTRIBUTING.md`, a headless script with private session and
   system buses, the list of contracts (finding 12).
 - **Stage 2's design**: budgets checked on the GPU apart from CI's; the launcher's first answer and
-  full result budgeted apart (finding 9); applications launched in scopes of their own
-  (finding 8).
+  full result budgeted apart (finding 9).
 - **Before the first history is stored**: its encryption, key, retention and erasure (finding 7).
 - **Stage 3's design**: who writes the greeter's folder, with which rights (finding 7); whether
   `hollow` refuses core dumps, and how network and pairing secrets are handled (finding 6).
