@@ -33,7 +33,8 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
 - To send to Yuna's session, through the owner: rows 19 to 22 of [`needs.md`](needs.md#yuna) and
   the precision of row 8, approved by the owner on 2026-11-18.
 - Next: when Stage 1's deliverables exist and the owner opens it, Stage 1's design session plans
-  its milestones here.
+  its milestones here. Rust 1.100 is the first toolchain candidate to validate
+  ([ADR-0026](adr/0026-the-first-rust-toolchain.md)).
 
 ## Design of the audit's findings
 

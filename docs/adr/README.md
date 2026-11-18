@@ -44,3 +44,4 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0023](0023-formats-across-versions.md) | Formats across versions | Accepted; supersedes in part 0008 (the state file, and errors in the configuration) |
 | [0024](0024-a-theme-switch-completed-after-any-interruption.md) | A theme switch completed after any interruption | Accepted; supersedes in part 0007 (how a switch is applied and announced) |
 | [0025](0025-the-notification-portal-served-by-hollow.md) | The Notification portal served by Hollow | Accepted |
+| [0026](0026-the-first-rust-toolchain.md) | The first Rust toolchain | Accepted |
