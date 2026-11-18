@@ -28,8 +28,9 @@ The owner chose, on 2026-11-18:
 
 **One envelope rule for every file in a format of Hollow's own**: the state file, the greeter's
 appearance file, and those that come later (the histories). Files in other programs' formats
-(the theme's outputs, Yuna's colours file) follow their own programs' rules. The file's first node is its envelope: the format's
-number, a write sequence, and the version of Hollow that wrote it.
+(the theme's outputs, Yuna's colours file) follow their own programs' rules. The file's first
+node is its envelope: the format's number, a write sequence, and the version of Hollow that wrote
+it.
 
 **Within a format, fields are only added.** A field's meaning never changes. An added field
 stands alone: one that qualifies an older field would let an older Hollow change the older one
