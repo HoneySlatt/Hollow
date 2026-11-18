@@ -91,8 +91,8 @@ check to make it pass (a skipped test, a raised budget, a silenced lint) without
 - Passwords never leave the field and the PAM helper: never logged, never shown to an agent,
   never kept after the attempt.
 - Signals from logind and other system services are checked against the sender's unique name.
-- Everything other programs send (notification markup and images, tray menus and icons, clipboard
-  data, the greeter's appearance file) is untrusted, bounded and fuzzed.
+- Everything other programs send (notification markup, images and sounds, tray menus and icons,
+  clipboard data, the greeter's appearance file) is untrusted, bounded and fuzzed.
 - The owner's data is never lost: versioned formats, atomic writes, a backup before a migration
   ([ADR-0023](docs/adr/0023-formats-across-versions.md)).
 

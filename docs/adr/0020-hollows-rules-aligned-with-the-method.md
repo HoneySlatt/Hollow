@@ -39,7 +39,7 @@ The owner chose, on 2026-11-17, the method's rules:
   topic's rule whole; one ADR is read for a topic ([`README.md`](README.md)). The four earlier
   amendments become supersessions in part, their topics unchanged: each newer ADR was read again
   and states its topic whole. ADR-0017's Stage 1 deliverable for the services is superseded in
-  part by ADR-0018. Every ADR gains a section *Validation and reconsideration*.
+  part by ADR-0018. Every new ADR has a section *Validation and reconsideration*; the earlier ones keep their text.
 
 ## Alternatives considered
 
@@ -63,8 +63,8 @@ The owner chose, on 2026-11-17, the method's rules:
 
 ## Validation and reconsideration
 
-Evidence at the time: the method's templates and `quality-bars.md`, and Hollow's documents read
-again; no code exists. Checked at each milestone's review, against `AGENTS.md`: every abstraction
+Evidence at the time: the owner's project method (its templates and its quality bars, kept outside
+this repository), and Hollow's documents read again; no code exists. Checked at each milestone's review, against `AGENTS.md`: every abstraction
 names its benefit where it is declared; the ROADMAP's scenarios the milestone touches have
 evidence; no ADR's rule is spread over several. Proposed again if the method changes these rules,
 or if the scenarios' checks cost more than the faults they find, as a stage's audit shows.

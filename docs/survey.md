@@ -51,7 +51,9 @@ the surveys that read them, outside this repository; each fact below names its s
   `src/polkitagent/polkitagentsession.c`).
 - **Wake-ups**: D-Bus sends a signal only to clients with a matching rule. NetworkManager updates
   the current access point's strength every 6 s while connected (`nm-device-wifi.c`,
-  `periodic_update`). UPower polls its devices every 30 or 120 s (`up-daemon.c`).
+  `periodic_update`), and emits a change only when the percent changes. UPower polls each battery
+  every 30 s, every 5 s while an estimate is missing, and its `UpdateTime` changes at each poll
+  (`up-device-battery.c`, read on 2026-11-17). Both poll whether anyone listens or not.
 - **Audio**: libpulse subscriptions tell which program records (`SOURCE_OUTPUT`), as Wayle uses
   them; the `pipewire` crate's objects are not `Send`, and its loop exposes a file descriptor.
   COSMIC keeps libpipewire in one audio daemon.

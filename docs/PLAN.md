@@ -15,8 +15,8 @@ Every milestone ends with the definition of done in [`AGENTS.md`](../AGENTS.md#d
 - Hollow waits for what its Stage 1 needs from uwui, by the owner's choice
   ([ADR-0002](adr/0002-uwui-and-no-code-before-its-first-stage.md),
   [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md)). No milestone is open.
-- Its needs were sent to Yuna's and SlimeEngine's sessions on 2026-11-14; Yuna has planned all but
-  one ([`needs.md`](needs.md)).
+- Its needs were sent to Yuna's and SlimeEngine's sessions on 2026-11-14; Yuna has planned all of
+  rows 1 to 18 but row 13 ([`needs.md`](needs.md)).
 - An [audit of the architecture](audits/2026-11-17-architecture.md) on 2026-11-17:
   [ADR-0016](adr/0016-recovering-a-locked-session.md) and
   [ADR-0017](adr/0017-each-stage-opens-on-named-deliverables.md) and
@@ -81,7 +81,9 @@ From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follo
   - the prototype that confirms the services thread and chooses its runtime; the bounds of the
     messages between the two threads, where blocking work runs, and how the services stop
     ([ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md), finding 4); that the
-    hang-up watch sleeps at rest ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md));
+    hang-up watch sleeps at rest, and that a new start in place keeps the process
+    ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)); whether uwui's KDL reader keeps
+    an unknown node's text ([ADR-0023](adr/0023-formats-across-versions.md));
   - findings 3, 5, 7 (the state file and the theme switch), 10 and 11 were moved ahead, to the
     design session above.
 - **Stage 1's first milestone**: `CONTRIBUTING.md`, a headless script with private session and
@@ -89,7 +91,10 @@ From the [audit of 2026-11-17](audits/2026-11-17-architecture.md), by what follo
 - **Stage 2's design**: budgets checked on the GPU apart from CI's; the launcher's first answer and
   full result budgeted apart (finding 9).
 - **Before the first history is stored**: its encryption, key, retention and erasure (finding 7).
-- **Stage 3's design**: who writes the greeter's folder, with which rights (finding 7); whether
+- **Stage 3's design**: how crashes are counted, and how Hollow tells a Yuna that stopped from one
+  that ended its connection ([ADR-0016](adr/0016-recovering-a-locked-session.md),
+  [ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)); who writes the greeter's folder,
+  with which rights (finding 7); whether
   `hollow` refuses core dumps, and how network and pairing secrets are handled (finding 6).
 - The rivals' figures were measured with software rendering, which inflates the memory of
   programs that draw with OpenGL or Qt Quick ([`measurements.md`](measurements.md)).

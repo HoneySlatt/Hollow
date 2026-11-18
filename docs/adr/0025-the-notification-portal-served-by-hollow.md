@@ -37,9 +37,10 @@ The owner chose, on 2026-11-18:
 - **Hollow serves the Notification portal's backend, at version 2**, on the services thread,
   beside the Settings backend. Notifications from the portal and from
   `org.freedesktop.Notifications` share one queue, one presentation and one history. Their
-  display hints are honoured: a notification that asks to hide its content on the lock screen is
-  hidden there, as every notification's content already is ([ADR-0005](0005-the-lock-screen.md)).
-  Icons and sounds are untrusted input, bounded, and their parsers are contained
+  display hints are honoured: a *transient* notification is shown but never kept in the history.
+  The hints about the lock screen ask for nothing more than Hollow already does, since the lock
+  screen shows no notification's content ([ADR-0005](0005-the-lock-screen.md)). Icons and sounds
+  are untrusted input, bounded, and their parsers are contained
   ([ADR-0021](0021-what-survives-a-failure-of-hollow.md)).
 - **Built at Stage 1**, with the notification server, tested against xdg-desktop-portal on a
   private bus.
@@ -70,8 +71,10 @@ The owner chose, on 2026-11-18:
 
 Evidence at the time: xdg-desktop-portal's sources (`notification.c`, `xdp-portal-config.c`,
 `xdp-app-info-host.c`), flatpak's documentation and GLib's sources, read on 2026-11-17; no code.
-Checked at Stage 1: a notification sent through the portal by a program in an `app-` unit reaches
-Hollow with its app id and is shown once; one sent with *hide content on the lock screen* shows
-nothing of its content while locked; a malformed icon is refused without ending `hollow`.
+Checked at Stage 1, in the rows of the ROADMAP's
+[*Architecture and stability scenarios*](../ROADMAP.md#architecture-and-stability-scenarios)
+that cite this ADR: a notification sent through the portal by a program in an `app-` unit reaches
+Hollow with its app id and is shown once; a *transient* one is never in the history; a malformed
+icon or sound is refused without ending `hollow`.
 Proposed again if the portal's interface moves to a version Hollow does not serve, or if Yuna
 declines row 22.

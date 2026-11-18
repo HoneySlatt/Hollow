@@ -45,19 +45,23 @@ generation again:
 Rendering the same generation twice gives the same bytes, so that a start reloads nothing. A
 palette derived from the wallpaper is kept with its generation, never computed again at start.
 
-**Hollow writes only into its own folder**, which the applications' configurations include, as
-pywal does. A file an application owns is edited key by key, and such files are listed apart. A
-file the owner edited is never overwritten.
+**Hollow writes its files into a folder of its own**, which the applications' configurations
+include, as pywal does. The few files an application owns, where no include exists, are edited
+key by key, and listed apart. Hollow keeps the hash of each file it wrote. A file that matches
+neither that hash nor the new render was changed by someone else: Hollow leaves it as it is and
+tells the owner. A file the owner edited is never overwritten.
 
-**After a rollback**, an older Hollow applies the chosen theme with its own templates.
+**After a rollback**, an older Hollow applies, with its own templates, the theme its own state file
+holds: the theme chosen before the upgrade, unless the owner chose another since
+([ADR-0023](0023-formats-across-versions.md)).
 
 **Yuna's fade**: the announcements carry the generation, so that the late end of an older switch
 never ends the fade of a newer one. Hollow asks Yuna to keep the screen frozen until Hollow's
 end, or Yuna's own bound if that comes first ([`needs.md`](../needs.md#yuna), row 8). A switch's
-budget on the laptop stays under that bound.
+budget, set at the engine's milestone, stays on the laptop under that bound, once Yuna gives it.
 
-The rest of ADR-0007 stands: the palettes, the outputs, and the engine running only on a change,
-off the interface thread.
+The rest of ADR-0007 stands: the palettes, the outputs, and the engine running off the interface
+thread, only on a change and once at each start.
 
 ## Alternatives considered
 
@@ -80,10 +84,8 @@ off the interface thread.
 
 ## Validation and reconsideration
 
-Evidence at the time: a challenge by a second reviewer and pywal's documentation; reasoning, no
-code. Scenarios, in the ROADMAP's table: `hollow` killed at each file and at each reload leaves
-every fake application on the final theme after a start; a start after a clean switch reloads
-nothing; rendering a generation twice gives the same bytes; the owner's applications are switched
-on the laptop within Yuna's bound; a wallpaper rotating every minute under a theme derived from it
-keeps the switches bounded. Proposed again if mixes show
-during switches, or if Yuna declines the precision of row 8.
+Evidence at the time: pywal's documentation, and reasoning reviewed by a second agent, whose
+report is not kept here; no code. The scenarios are the rows of the ROADMAP's
+[*Architecture and stability scenarios*](../ROADMAP.md#architecture-and-stability-scenarios)
+that cite this ADR. Proposed again if mixes show during switches, or if Yuna declines the
+precision of row 8.

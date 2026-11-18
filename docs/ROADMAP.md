@@ -17,8 +17,9 @@ focus modes, the dock, widgets, the weather and the indicators of the microphone
 shared screen.
 
 Excellent means: the look and motion of the most refined current interfaces, every animation at
-the display's rate up to 240 Hz, and nothing at all at rest: no frame, no processor time, no
-wake-up of its own. It is lighter than any rival on every machine it runs on.
+the display's rate up to 240 Hz, and nothing at rest but what the owner sees change: no frame, no
+processor time, no wake-up of its own beyond that ([ADR-0022](adr/0022-what-rest-allows.md)). It
+is lighter than any rival on every machine it runs on.
 
 It is made for its owner first, and public, under GPL-3.0-or-later
 ([ADR-0012](adr/0012-gpl-3-0-or-later.md)).
@@ -65,7 +66,7 @@ met.
 
 | Budget | Target | Measured by | Checked in |
 |---|---|---|---|
-| At rest | 0 own wake-ups but the deadlines of the table below; 0 frames; 0 % of a core; wake-ups caused by others each traced to a row of the table or to a message addressed to Hollow ([ADR-0022](adr/0022-what-rest-allows.md)) | every thread's context switches, on a manual clock; each wake-up named by its source, others' by sender | CI, headless; by hand on each machine |
+| At rest | 0 own wake-ups but the deadlines of the table below; 0 frames but those the table's rows draw; about 0 % of a core; wake-ups caused by others each traced to a row of the table or to a message addressed to Hollow ([ADR-0022](adr/0022-what-rest-allows.md)) | every thread's context switches, over 30 s on a manual clock in CI, over ten minutes by hand; each wake-up named by its source, others' by sender | CI, headless; by hand on each machine |
 | Memory | own cost (Pss + GPU memory above a blank uwui layer surface per output) at most a third of the best rival's own cost in its class; about 30 MB for the whole shell, provisional | `/proc/<pid>/smaps_rollup`, the GPU's usage statistics | each milestone, on each machine |
 | Start | to the bar's first frame: 100 ms warm, 500 ms cold, high tier | the log's times; `hyperfine` | each milestone |
 | Input to answer | one frame | input through the compositor, presentation feedback | CI, headless |
@@ -73,7 +74,7 @@ met.
 | Lock | every output blank at once (Yuna); the lock's interface within one frame of the command | the protocol's events and presentation feedback | CI, headless |
 | polkit prompt | shown within one frame of the request | the agent's log and presentation feedback | CI, headless |
 | Launcher | opened in one frame; a search over ten times the owner's music and games, their size read at Stage 2, answered within one frame | presentation feedback over scripted typing | CI, headless |
-| A theme switch | set at its milestone, from the applications' reload times | the engine's log | each milestone |
+| A theme switch | set at its milestone, from the applications' reload times; on the laptop, under Yuna's bound on its fade ([ADR-0024](adr/0024-a-theme-switch-completed-after-any-interruption.md)) | the engine's log | each milestone |
 | A flood | 1,000 notifications in a second keep the frame budget and a bounded memory | a scripted sender on a private bus | CI |
 | Histories | clipboard and notification histories bounded in count and size, encrypted at rest | tests | CI |
 
@@ -115,11 +116,11 @@ the change. Each decision adds its rows here.
 | zbus's runtime replaced | The change stays in the services thread | traced at Stage 1's audit | the audit |
 | An input that makes a parser panic | That input is refused; nothing else changes ([ADR-0021](adr/0021-what-survives-a-failure-of-hollow.md)) | the fuzzers, Stage 1 | CI |
 | A notification sent while `hollow` restarts | It is delivered once `hollow` holds its name again (ADR-0021) | a private bus with the activation file, Stage 1 | [`measurements.md`](measurements.md) |
-| The interface thread blocked, locked or not | The process ends within a second of Yuna closing the connection, and systemd restarts it; while locked, the relief follows (ADR-0021) | the hang-up watch at Stage 1's prototype; headless Yuna at Stage 3, unlocked once Yuna takes [`needs.md`](needs.md#yuna)'s row 19 | Stage 3's audit |
-| Yuna killed five times in a minute | `hollow` comes back each time, never stopped by systemd's start limit, never in a reduced or lock-only start (ADR-0021) | headless Yuna, Stage 2 | [`measurements.md`](measurements.md) |
-| `hollow` killed ten times beside a program it launched | The program runs on, with its app id as the portal reads it; no failed unit is left (ADR-0021) | a fake systemd user manager on a private bus, Stage 2 | [`measurements.md`](measurements.md) |
+| The interface thread blocked, locked or not | `hollow` starts again in place within a second of Yuna closing the connection, and counts a crash; while locked, the relief follows (ADR-0021) | the hang-up watch at Stage 1's prototype; headless Yuna at Stage 3, unlocked once Yuna takes [`needs.md`](needs.md#yuna)'s row 19 | Stage 3's audit |
+| Yuna killed five times in a minute | `hollow` comes back each time by a new start in place, never stopped by systemd's start limit, never in a reduced or lock-only start (ADR-0021) | headless Yuna under the systemd user manager of a test session, Stage 2 | [`measurements.md`](measurements.md) |
+| `hollow` killed ten times beside a program it launched | The program runs on, with its app id as the portal reads it; no failed unit is left (ADR-0021) | the calls against a fake systemd user manager on a private bus; the outcome under the user manager of a test session, Stage 2 | [`measurements.md`](measurements.md) |
 | A crash at each start, unlocked | `hollow` reaches its reduced start and tells the owner (ADR-0021) | a test that makes `hollow` abort at start, Stage 3 | Stage 3's audit |
-| Ten minutes locked, ten with every output off, ten under a fullscreen game, with Wi-Fi and the battery in the bar | Nothing wakes `hollow` beyond the table of wake-ups at rest ([ADR-0022](adr/0022-what-rest-allows.md)) | headless Yuna with fake services, once Yuna takes [`needs.md`](needs.md#yuna)'s rows 20 and 21, Stage 2 | [`measurements.md`](measurements.md) |
+| Ten minutes with every output off and ten under a fullscreen game, with Wi-Fi and the battery in the bar; ten minutes locked | Nothing wakes `hollow` beyond the table of wake-ups at rest ([ADR-0022](adr/0022-what-rest-allows.md)) | headless Yuna with fake services, once Yuna takes [`needs.md`](needs.md#yuna)'s rows 20 and 21: Stage 2; locked, Stage 3 | [`measurements.md`](measurements.md) |
 | Fake NetworkManager and UPower at their real cadence | Only the table's wake-ups; a frame only when the level shown changes (ADR-0022) | fake services on a private bus, Stage 1; the frames at Stage 2 | [`measurements.md`](measurements.md) |
 | Ten windows retitled each second, a tray icon changed ten times a second | Wake-ups bounded per sender (ADR-0022) | headless Yuna and a fake tray item, Stage 2 | [`measurements.md`](measurements.md) |
 | The clock set back, a resume after eight hours, a new time zone | Each deadline fires once, at its new time (ADR-0022) | a manual clock, Stage 1 | CI |
@@ -128,6 +129,11 @@ the change. Each decision adds its rows here.
 | An unknown node in the configuration at start | That node alone falls back; a restricting section falls back to its strictest default (ADR-0023) | tests, Stage 1 | CI |
 | `hollow` killed at each file and at each reload of a theme switch | After a start, every fake application shows the final theme; a start after a clean switch reloads nothing ([ADR-0024](adr/0024-a-theme-switch-completed-after-any-interruption.md)) | fake applications on a test profile, Stage 1 | CI |
 | The owner's applications switched on the laptop | Within Yuna's bound on its fade (ADR-0024) | the engine's log, Stage 1, then with Yuna's fade | [`measurements.md`](measurements.md) |
+| A notification sent through the portal by a program in an `app-` unit; a *transient* one; a malformed icon or sound | It reaches Hollow with its app id and is shown once; the transient one is never in the history; the malformed one is refused without ending `hollow` ([ADR-0025](adr/0025-the-notification-portal-served-by-hollow.md)) | xdg-desktop-portal on a private bus, Stage 1 | CI |
+| `hollow` killed in the middle of a write | The old file or the new one is left, never a mix ([ADR-0023](adr/0023-formats-across-versions.md)) | a test that kills the writer at each step, Stage 1 | CI |
+| A wallpaper rotating every minute under a theme derived from it | Switches stay bounded, each within its budget (ADR-0024) | the engine against fake applications, Stage 1 | [`measurements.md`](measurements.md) |
+| The services thread stops taking messages; the GPU device lost; a full disk | A hang starts `hollow` again; the GPU is redrawn or the loss is fatal; a full disk keeps the old file and tells the owner (ADR-0021) | a stalled services thread, Stage 1; the GPU lost on demand, Stage 2; a full test file system, Stage 1 | CI |
+| A sleep right after the lock command | The blanked frame is presented on every output before Yuna releases its inhibitor ([ADR-0016](adr/0016-recovering-a-locked-session.md)) | headless Yuna and a fake logind, Stage 3 | Stage 3's audit |
 
 ## 3. Decisions
 
@@ -187,7 +193,8 @@ session of its own, once the deliverables it names exist and the owner opens it
   the Settings portal's backend, Yuna's colours file.
 - `hollow msg` and the agents' actions.
 
-**Exit.** Each service follows its fake at zero wake-ups at rest; a theme switch themes the
+**Exit.** Each service follows its fake with no wake-up at rest beyond the table of wake-ups at
+rest; a theme switch themes the
 owner's applications on a test profile.
 
 ### Stage 2 — The surfaces → 0.2

@@ -31,7 +31,8 @@ Read at their sources on 2026-11-17:
 
 The owner chose, on 2026-11-18:
 
-**Hollow is at rest when the owner is not using it and nothing it shows changes.** What is
+**Hollow is at rest when the owner is not using it and nothing it shows changes, but what the
+table below changes** (the clock's tick, a new level of the battery or the signal). What is
 *shown* is what the owner can see. Nothing is shown on an output that is off. While the session
 is locked, only the lock screen is shown. Under a fullscreen game or film, only what
 [ADR-0010](0010-over-a-fullscreen-game-or-film-a-setting.md)'s setting shows. At rest:
@@ -59,11 +60,12 @@ is locked, only the lock screen is shown. Under a fullscreen game or film, only 
 
 With every output off, `hollow` wakes only for messages addressed to it.
 
-**The rest budget**: zero own wake-ups but the table's deadlines; zero frames; zero percent of a
-core. Wake-ups caused by others are counted by sender, each traced to a row of the table or to a
-message addressed to Hollow. Hollow names each of its wake-ups by its source, as Yuna does
-(Yuna's ADR-0082). Tests run on a manual clock, so that a deadline never makes a measure pass or
-fail by its timing.
+**The rest budget**: zero own wake-ups but the table's deadlines; zero frames but those the
+table's rows draw; about zero percent of a core. Wake-ups caused by others are counted by sender,
+each traced to a row of the table or to a message addressed to Hollow. Hollow names each of its
+wake-ups by its source, as Yuna does (Yuna's ADR-0082). In CI, every thread's context switches
+are counted over 30 s on a manual clock, so that a deadline never makes a measure pass or fail by
+its timing; by hand on each machine, over ten minutes on the real clock.
 
 **Hollow asks Yuna** for the power state of each output, and for a subscriber's choice of the
 kinds of events it receives ([`needs.md`](../needs.md#yuna), rows 20 and 21).
@@ -92,11 +94,8 @@ kinds of events it receives ([`needs.md`](../needs.md#yuna), rows 20 and 21).
 
 ## Validation and reconsideration
 
-Evidence at the time: the sources above and a challenge by a second reviewer; the costs in the
-table are not measured yet. Scenarios, in the ROADMAP's table: ten minutes locked, ten with the
-outputs off and ten under a fullscreen game, with Wi-Fi and the battery in the bar, wake nothing
-beyond the table; fake services at their real cadence cause only the table's wake-ups, and
-frames only when the level shown changes; ten windows retitled each second and a tray icon
-changing ten times a second keep the wake-ups bounded per sender; a clock set back, a resume
-after eight hours and a new time zone fire each deadline once, at its new time. Proposed again if
+Evidence at the time: the sources above, and reasoning reviewed by a second agent, whose report is
+not kept here; the costs in the table are not measured yet. The scenarios are the rows of the
+ROADMAP's [*Architecture and stability scenarios*](../ROADMAP.md#architecture-and-stability-scenarios)
+that cite this ADR. Proposed again if
 a measured row costs more than its figure, or if Yuna declines rows 20 or 21.

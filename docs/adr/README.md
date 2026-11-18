@@ -34,13 +34,13 @@ projects are named with their project: "Yuna's ADR-0057".
 | [0013](0013-accessibility-keyboard-and-reduced-motion-first.md) | Accessibility: the keyboard and reduced motion first | Accepted |
 | [0014](0014-budgets-measured-as-uwuis.md) | Budgets measured as uwui's | Accepted; superseded in part by 0022 (the rest budget) |
 | [0015](0015-what-hollow-asks-of-yuna-and-uwui.md) | What Hollow asks of Yuna and uwui | Accepted |
-| [0016](0016-recovering-a-locked-session.md) | Recovering a locked session whose locker is gone | Accepted; supersedes in part 0003, 0005 |
-| [0017](0017-each-stage-opens-on-named-deliverables.md) | Each stage opens on named deliverables, each with its project | Accepted; supersedes in part 0002; superseded in part by 0018 (what uwui gives the services) |
-| [0018](0018-system-services-on-a-thread-of-their-own.md) | System services on a thread of their own | Accepted; supersedes in part 0004, 0017 |
+| [0016](0016-recovering-a-locked-session.md) | Recovering a locked session whose locker is gone | Accepted; supersedes in part 0003 (a crash while locked and its recovery), 0005 (who holds sleep back and blanks the outputs) |
+| [0017](0017-each-stage-opens-on-named-deliverables.md) | Each stage opens on named deliverables, each with its project | Accepted; supersedes in part 0002 (when Hollow's code starts); superseded in part by 0018 (what uwui gives the services) |
+| [0018](0018-system-services-on-a-thread-of-their-own.md) | System services on a thread of their own | Accepted; supersedes in part 0004 (where the services run), 0017 (what uwui gives the services) |
 | [0019](0019-the-lock-screen-answers-yunas-ping.md) | The lock screen answers Yuna's ping from the thread that draws it | Accepted |
 | [0020](0020-hollows-rules-aligned-with-the-method.md) | Hollow's rules aligned with the method | Accepted |
-| [0021](0021-what-survives-a-failure-of-hollow.md) | What survives a failure of `hollow` | Accepted; supersedes in part 0003 |
-| [0022](0022-what-rest-allows.md) | What rest allows | Accepted; supersedes in part 0004, 0014 |
-| [0023](0023-formats-across-versions.md) | Formats across versions | Accepted; supersedes in part 0008 |
-| [0024](0024-a-theme-switch-completed-after-any-interruption.md) | A theme switch completed after any interruption | Accepted; supersedes in part 0007 |
+| [0021](0021-what-survives-a-failure-of-hollow.md) | What survives a failure of `hollow` | Accepted; supersedes in part 0003 (each component's failure and the restart) |
+| [0022](0022-what-rest-allows.md) | What rest allows | Accepted; supersedes in part 0004 (what a service follows), 0014 (the rest budget) |
+| [0023](0023-formats-across-versions.md) | Formats across versions | Accepted; supersedes in part 0008 (the state file, and errors in the configuration) |
+| [0024](0024-a-theme-switch-completed-after-any-interruption.md) | A theme switch completed after any interruption | Accepted; supersedes in part 0007 (how a switch is applied and announced) |
 | [0025](0025-the-notification-portal-served-by-hollow.md) | The Notification portal served by Hollow | Accepted |

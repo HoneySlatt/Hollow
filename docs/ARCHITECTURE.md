@@ -11,8 +11,9 @@ its shape is set by the ADRs:
 - **`hollow-greeter`**, the login screen, on Yuna's greeter mode under greetd
   ([ADR-0006](adr/0006-the-login-screen-on-yunas-greeter-mode.md)).
 - **Services**: Hollow's own D-Bus clients and servers on zbus, on the services thread, which owns
-  their connections, the names Hollow serves (notifications, the tray's watcher, the polkit agent,
-  the Settings and Notification portals' backends) and the subscriptions, and sends changes to the
+  their connections, the names Hollow serves (notifications, the tray's watcher, the Settings and
+  Notification portals' backends), the polkit agent's object and its registration, and the
+  subscriptions, and sends changes to the
   interface through uwui's channels
   ([ADR-0004](adr/0004-system-services-hollows-own-clients-on-zbus.md),
   [ADR-0018](adr/0018-system-services-on-a-thread-of-their-own.md),

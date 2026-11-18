@@ -13,7 +13,7 @@ providers, notifications, the tray, the control centre and its popups, the on-sc
 calendar, the lock screen, the login screen, the polkit agent, and the theme of the other
 applications and websites. It runs only on Yuna, the owner's compositor, and draws with
 [uwui](https://github.com/HoneySlatt/uwui), the owner's interface toolkit. It aims at the look and
-motion of the most refined current interfaces, at 240 Hz, and at doing nothing at all at rest.
+motion of the most refined current interfaces, at 240 Hz, and at doing nothing at rest but what the owner sees change.
 
 Its code starts once what its first stage needs from uwui exists ([`docs/needs.md`](docs/needs.md)).
 Until then it is its design.
