@@ -67,5 +67,5 @@ The owner chose, on 2026-11-17, the method's rules:
 Evidence at the time: the owner's project method (its templates and its quality bars, kept outside
 this repository), and Hollow's documents read again; no code exists. Checked at each milestone's
 review, against `AGENTS.md`: every abstraction names its benefit where it is declared; the
-ROADMAP's scenarios the milestone touches have evidence; no ADR's rule is spread over several. Proposed again if the method changes these rules,
-or if the scenarios' checks cost more than the faults they find, as a stage's audit shows.
+ROADMAP's scenarios the milestone touches have evidence; no ADR's rule is spread over several.
+Proposed again if the method changes these rules, or if the scenarios' checks cost more than the faults they find, as a stage's audit shows.
