@@ -41,8 +41,8 @@ changed:
 
 1. **Parsers of other programs' data**: notification markup, images and sounds, tray menus and
    icons, clipboard data, any image or sound decoded. Each is a pure function, its input borrowed
-   and its output owned. A panic refuses that input as malformed and is logged. Bounds on the input still keep
-   them from exhausting the memory or the stack, which no catch would save.
+   and its output owned. A panic refuses that input as malformed and is logged. Bounds on the
+   input still keep them from exhausting the memory or the stack, which no catch would save.
 2. **A theme engine's job**: a panic fails the switch, which the next start completes, as the
    formats' decision sets.
 3. **The PAM helper**, a process apart: its death or a timeout fails that attempt only, said on
